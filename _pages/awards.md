@@ -1,5 +1,5 @@
 ---
-permalink: /award/
+permalink: /awards/
 title: "Awards"
 ---
 
