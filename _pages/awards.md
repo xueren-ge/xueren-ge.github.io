@@ -21,6 +21,6 @@ title: "Awards"
 
 - An action recognition method based on Tensorflow target detection (Patent No.: CN111860103A) *China National Intellectual Property Administration (CNIPA)*. Oct. 2020
 
-- Hand-painted cross pentagon classification method for AD scale based on convolutional deep neural network (Patent No.: CN111652287A *China National Intellectual Property Administration (CNIPA)*. Sep. 2020
+- Hand-painted cross pentagon classification method for AD scale based on convolutional deep neural network (Patent No.: CN111652287A) *China National Intellectual Property Administration (CNIPA)*. Sep. 2020
 
 - An automatic posture recognition system for AD scale comprehension ability test (Patent No.: CN111652076A) *China National Intellectual Property Administration (CNIPA)*. Sep. 2020
