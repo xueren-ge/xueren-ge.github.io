@@ -1,5 +1,5 @@
 ---
-title: "EMS text classification"
+title: "protocol selection"
 layout: single-portfolio
 excerpt: "<img src='/images/research/EMS.png' alt=''>"
 collection: research
