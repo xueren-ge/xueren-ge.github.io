@@ -1,19 +1,11 @@
 ---
-layout: archive
-title: "Photography"
-permalink: /photography/
+permalink: /
+title: "Photo"
+excerpt: "Photo"
 author_profile: true
+redirect_from: 
+  - /photo/
+  - /photo.html
 ---
 
-Photos taken by me :>
-
-<nbsp>
-
-{% include base_path %}
-
-{% assign ordered_pages = site.photography | sort:"order_number" %}
-
-{% for post in ordered_pages %}
-  <!-- {% include archive-single.html type="grid" %} -->
-  {% include archive-single.html %}
-{% endfor %}
+This is the photos.
