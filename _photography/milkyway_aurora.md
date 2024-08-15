@@ -1,5 +1,5 @@
 ---
-title: "Milkyway and Aurora"
+title: "Milkyway"
 layout: single-portfolio
 collection: photography
 order_number: 10
@@ -13,3 +13,9 @@ Although the temperature in Shenandoah mountains is pretty low but I still enjoy
 
 The photo is taken in Blue Ridge Parkway, Virginia, I used Canon R6 35mm F2.8 ISO 800 tracked sky x8, and the foreground x5
 
+<p align = "center">    
+<img  src="/images/photography/learn_all.jpg" width="400" />
+<img  src="/images/photography/learn_all.jpg" width="400" />
+<img  src="/images/photography/learn_all.jpg" width="400" />
+<img  src="/images/photography/learn_all.jpg" width="400" />
+</p>
