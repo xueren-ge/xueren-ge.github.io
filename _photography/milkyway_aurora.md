@@ -16,6 +16,7 @@ The photo is taken in Blue Ridge Parkway, Virginia, I used Canon R6 35mm F2.8 IS
 <p align = "center">    
 <img  src="/images/photography/learn_all.jpg" width="400" />
 <img  src="/images/photography/learn_all.jpg" width="400" />
+<br>
 <img  src="/images/photography/learn_all.jpg" width="400" />
 <img  src="/images/photography/learn_all.jpg" width="400" />
 </p>
