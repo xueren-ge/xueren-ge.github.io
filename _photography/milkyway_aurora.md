@@ -5,6 +5,9 @@ collection: photography
 order_number: 10
 ---
 
+<link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+
 
 <style>
   .image-grid {
@@ -40,30 +43,25 @@ order_number: 10
 
 <div class="image-grid">
   <figure>
-    <img src="/images/photography/milkyway/m0.jpg" alt="Image 1">
-    <!-- <figcaption>Image 1</figcaption> -->
+    <a href="/images/photography/milkyway/m0.jpg" data-lightbox="milkyway"><img src="/images/photography/milkyway/m0.jpg" alt="Image 1"></a>
   </figure>
   <figure>
-    <img src="/images/photography/milkyway/m1.jpg" alt="Image 2">
-    <!-- <figcaption>Image 2</figcaption> -->
+    <a href="/images/photography/milkyway/m1.jpg" data-lightbox="milkyway"><img src="/images/photography/milkyway/m1.jpg" alt="Image 2"></a>
   </figure>
   <figure>
-    <img src="/images/photography/milkyway/m2.jpg" alt="Image 3">
-    <!-- <figcaption>Image 3</figcaption> -->
+    <a href="/images/photography/milkyway/m2.jpg" data-lightbox="milkyway"><img src="/images/photography/milkyway/m2.jpg" alt="Image 3"></a>
   </figure>
   <figure>
-    <img src="/images/photography/milkyway/m3.jpg" alt="Image 4">
-    <!-- <figcaption>Image 4</figcaption> -->
+    <a href="/images/photography/milkyway/m3.jpg" data-lightbox="milkyway"><img src="/images/photography/milkyway/m3.jpg" alt="Image 4"></a>
   </figure>
-    <figure>
-    <img src="/images/photography/milkyway/m4.jpg" alt="Image 5">
-    <!-- <figcaption>Image 5</figcaption> -->
+  <figure>
+    <a href="/images/photography/milkyway/m4.jpg" data-lightbox="milkyway"><img src="/images/photography/milkyway/m4.jpg" alt="Image 5"></a>
   </figure>
-    <figure>
-    <img src="/images/photography/milkyway/m5.jpg" alt="Image 5">
-    <!-- <figcaption>Image 5</figcaption> -->
+  <figure>
+    <a href="/images/photography/milkyway/m5.jpg" data-lightbox="milkyway"><img src="/images/photography/milkyway/m5.jpg" alt="Image 6"></a>
   </figure>
 </div>
+
 
 
 <style>
@@ -94,9 +92,10 @@ order_number: 10
 
 <div class="panorama-grid">
   <div class="panorama">
-    <img src="/images/photography/milkyway/p1.jpg" alt="Panorama 1">
+    <a href="/images/photography/milkyway/p1.jpg" data-lightbox="milkyway"><img src="/images/photography/milkyway/p1.jpg" alt="Panorama 1"></a>
   </div>
   <div class="panorama">
-    <img src="/images/photography/milkyway/p2.jpg" alt="Panorama 2">
+    <a href="/images/photography/milkyway/p2.jpg" data-lightbox="milkyway"><img src="/images/photography/milkyway/p2.jpg" alt="Panorama 2"></a>
   </div>
 </div>
+
