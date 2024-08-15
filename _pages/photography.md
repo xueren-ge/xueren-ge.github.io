@@ -3,11 +3,9 @@ layout: archive
 title: "Photography"
 permalink: /photography/
 author_profile: true
-header:
-  og_image: "research/ecdf.png"
 ---
 
-This is photos.
+This is a collections of photos taken by me.
 
 <nbsp>
 
