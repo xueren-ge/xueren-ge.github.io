@@ -5,7 +5,7 @@ permalink: /photography/
 author_profile: true
 ---
 
-This is a collections of photos taken by me.
+This is a collections of photos taken by me. All copyrights are held by Xueren Ge.
 
 <nbsp>
 
