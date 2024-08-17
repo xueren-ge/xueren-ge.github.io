@@ -1,0 +1,87 @@
+---
+title: "California"
+layout: single-portfolio
+collection: photography
+order_number: 20
+---
+
+<link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+
+
+<style>
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+    grid-auto-rows: 1fr;
+  }
+  .image-grid figure {
+    margin: 0;
+  }
+  .image-grid img {
+    width: 180px;
+    height: 250px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    margin: auto;
+  }
+  .image-grid figcaption {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+  }
+  .copyright {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
+  }
+</style>
+
+<div class="image-grid">
+  <figure>
+    <a href="/images/photography/cali/s1.jpg" data-lightbox="cali"><img src="/images/photography/cali/s1.jpg" alt="Image 2"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s2.jpg" data-lightbox="cali"><img src="/images/photography/cali/s2.jpg" alt="Image 3"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s3.jpg" data-lightbox="cali"><img src="/images/photography/cali/s3.jpg" alt="Image 4"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s4.jpg" data-lightbox="cali"><img src="/images/photography/cali/s4.jpg" alt="Image 5"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s5.jpg" data-lightbox="cali"><img src="/images/photography/cali/s5.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s6.jpg" data-lightbox="cali"><img src="/images/photography/cali/s6.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s7.jpg" data-lightbox="cali"><img src="/images/photography/cali/s7.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s8.jpg" data-lightbox="cali"><img src="/images/photography/cali/s8.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s9.jpg" data-lightbox="cali"><img src="/images/photography/cali/s9.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s10.jpg" data-lightbox="cali"><img src="/images/photography/cali/s10.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s11.jpg" data-lightbox="cali"><img src="/images/photography/cali/s11.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s12.jpg" data-lightbox="cali"><img src="/images/photography/cali/s12.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s13.jpg" data-lightbox="cali"><img src="/images/photography/cali/s13.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/cali/s14.jpg" data-lightbox="cali"><img src="/images/photography/cali/s14.jpg" alt="Image 6"></a>
+  </figure>
+</div>
