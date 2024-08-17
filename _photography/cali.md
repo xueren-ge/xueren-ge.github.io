@@ -84,4 +84,61 @@ order_number: 20
   <figure>
     <a href="/images/photography/cali/s14.jpg" data-lightbox="cali"><img src="/images/photography/cali/s14.jpg" alt="Image 6"></a>
   </figure>
+  <figure>
+    <a href="/images/photography/cali/s15.jpg" data-lightbox="cali"><img src="/images/photography/cali/s15.jpg" alt="Image 6"></a>
+  </figure>
+</div>
+
+
+<style>
+  .panorama-grid {
+    margin-top: 40px; /* Add a margin of 40px to create space */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .panorama {
+    width: 400px; /* Adjust the width to fit your panorama images */
+    height: 230px; /* Adjust the height to fit your panorama images */
+  }
+  .panorama img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+  .copyright {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
+  }
+</style>
+
+<div class="panorama-grid">
+  <div class="panorama">
+    <a href="/images/photography/cali/p1.jpg" data-lightbox="cali"><img src="/images/photography/cali/p1.jpg" alt="Panorama 1"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/cali/p2.jpg" data-lightbox="cali"><img src="/images/photography/cali/p2.jpg" alt="Panorama 2"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/cali/p3.jpg" data-lightbox="cali"><img src="/images/photography/cali/p3.jpg" alt="Panorama 2"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/cali/p4.jpg" data-lightbox="cali"><img src="/images/photography/cali/p4.jpg" alt="Panorama 2"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/cali/p5.jpg" data-lightbox="cali"><img src="/images/photography/cali/p5.jpg" alt="Panorama 2"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/cali/p6.jpg" data-lightbox="cali"><img src="/images/photography/cali/p6.jpg" alt="Panorama 2"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/cali/p7.jpg" data-lightbox="cali"><img src="/images/photography/cali/p7.jpg" alt="Panorama 2"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/cali/p8.jpg" data-lightbox="cali"><img src="/images/photography/cali/p8.jpg" alt="Panorama 2"></a>
+  </div>
 </div>
