@@ -1,5 +1,5 @@
 ---
-title: "California"
+title: "California 2023"
 layout: single-portfolio
 collection: photography
 order_number: 20
@@ -93,7 +93,8 @@ order_number: 20
 <style>
   .panorama-grid {
     margin-top: 40px; /* Add a margin of 40px to create space */
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Create 2 columns */
     justify-content: center;
     gap: 20px;
   }
