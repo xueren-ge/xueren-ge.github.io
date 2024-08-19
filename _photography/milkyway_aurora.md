@@ -8,6 +8,13 @@ order_number: 10
 <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
 
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+</script>
 
 <style>
   .image-grid {
@@ -26,6 +33,13 @@ order_number: 10
     padding: 5px;
     border: 1px solid #ddd;
     margin: auto;
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
   }
   .image-grid figcaption {
     text-align: center;
@@ -38,6 +52,14 @@ order_number: 10
     font-size: 12px;
     color: #666;
     margin-top: 20px;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
   }
 </style>
 
