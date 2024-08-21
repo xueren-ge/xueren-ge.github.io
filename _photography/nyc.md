@@ -56,6 +56,9 @@ order_number: 20
     <a href="/images/photography/newyork/m1.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m1.jpg" alt="Image 3"></a>
   </figure>
   <figure>
+    <a href="/images/photography/newyork/m2.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m2.jpg" alt="Image 5"></a>
+  </figure>
+  <figure>
     <a href="/images/photography/newyork/m3.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m3.jpg" alt="Image 5"></a>
   </figure>
   <figure>
@@ -72,6 +75,18 @@ order_number: 20
   </figure>
   <figure>
     <a href="/images/photography/newyork/m8.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m8.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/newyork/m9.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m9.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/newyork/m10.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m10.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/newyork/m11.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m11.jpg" alt="Image 6"></a>
+  </figure>
+  <figure>
+    <a href="/images/photography/newyork/m12.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m12.jpg" alt="Image 6"></a>
   </figure>
 </div>
 
@@ -105,6 +120,9 @@ order_number: 20
 
 <div class="panorama-grid">
   <div class="panorama">
+    <a href="/images/photography/newyork/p0.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/p0.jpg" alt="Panorama 1"></a>
+  </div>
+  <div class="panorama">
     <a href="/images/photography/newyork/p1.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/p1.jpg" alt="Panorama 1"></a>
   </div>
   <div class="panorama">
@@ -118,5 +136,14 @@ order_number: 20
   </div>
   <div class="panorama">
     <a href="/images/photography/newyork/p5.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/p5.jpg" alt="Panorama 2"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/newyork/p6.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/p6.jpg" alt="Panorama 2"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/newyork/p7.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/p7.jpg" alt="Panorama 2"></a>
+  </div>
+  <div class="panorama">
+    <a href="/images/photography/newyork/p8.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/p8.jpg" alt="Panorama 2"></a>
   </div>
 </div>
