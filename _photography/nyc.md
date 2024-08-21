@@ -56,9 +56,6 @@ order_number: 20
     <a href="/images/photography/newyork/m1.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m1.jpg" alt="Image 3"></a>
   </figure>
   <figure>
-    <a href="/images/photography/newyork/m2.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m2.jpg" alt="Image 4"></a>
-  </figure>
-  <figure>
     <a href="/images/photography/newyork/m3.jpg" data-lightbox="newyork"><img src="/images/photography/newyork/m3.jpg" alt="Image 5"></a>
   </figure>
   <figure>
