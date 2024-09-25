@@ -1,5 +1,5 @@
 ---
-title: "Milkyway 2023"
+title: "Milkyway 2024"
 layout: single-portfolio
 collection: photography
 order_number: 10
