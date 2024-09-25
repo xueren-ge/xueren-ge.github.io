@@ -56,12 +56,13 @@
       
       <!-- citation and icon code -->
       {% if post.author %}
-        <p>{{ post.author | replace: "Xueren Ge", "<strong>Xueren Ge</strong>" }}</p>
+        <p>{{ post.author | replace: "Xueren Ge", "<strong>Xueren Ge</strong>" }}</p><br>
       {% endif %}
       {% if post.venue %}
-        <p>{{ post.venue }}</p>
+        <p>{{ post.venue }}</p><br>
       {% endif %}
       <p>
+        <br>
         {% if post.link %}
           <a href="{{ post.link }}"><i class="fas fa-fw fa-link zoom" aria-hidden="true"></i></a>
         {% endif %}
