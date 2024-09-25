@@ -55,6 +55,9 @@
       {% endif %}
       
       <!-- citation and icon code -->
+      {% if post.author %}
+        <p><strong>Author(s):</strong> {{ post.author }}</p>
+      {% endif %}
       {% if post.venue %}
         <p><strong>Venue:</strong> {{ post.venue }}</p>
       {% endif %}
@@ -62,7 +65,7 @@
       <!-- {% if post.citation %}
         {{ post.citation }}
       {% endif %} -->
-      <br>
+      <!-- <br> -->
       {% if post.link %}
         <a href="{{ post.link }}"><i class="fas fa-fw fa-link zoom" aria-hidden="true"></i></a>
       {% endif %}
