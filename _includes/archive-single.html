@@ -56,10 +56,10 @@
       
       <!-- citation and icon code -->
       {% if post.author %}
-        <p><strong>Author(s):</strong> {{ post.author | replace: "Xueren Ge", "<strong>Xueren Ge</strong>" }}</p>
+        <p>{{ post.author | replace: "Xueren Ge", "<strong>Xueren Ge</strong>" }}</p>
       {% endif %}
       {% if post.venue %}
-        <p><strong>Venue:</strong> {{ post.venue }}</p>
+        <p>{{ post.venue }}</p>
       {% endif %}
       <p>
         {% if post.link %}
