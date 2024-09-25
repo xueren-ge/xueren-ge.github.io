@@ -12,7 +12,16 @@ author_profile: true
 {% include base_path %}
 
 {% for post in site.publications reversed %}
-  {% include archive-single.html %}
+  <h3>{{ post.title }}</h3>
+  <p><strong>Venue:</strong> {{ post.venue }}</p>
+  <p>{{ post.date | date: "%B %d, %Y" }}</p>
+  {% if post.link %}
+    <a href="{{ post.link }}">Read paper</a>
+  {% endif %}
+  {% if post.github %}
+    <a href="{{ post.github }}">Code</a>
+  {% endif %}
+  <p><strong>Citation:</strong> {{ post.citation }}</p>
 {% endfor %}
 
 <sup>*</sup> Equal authorship
