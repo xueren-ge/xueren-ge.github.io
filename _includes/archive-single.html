@@ -54,15 +54,24 @@
         </details>
       {% endif %}
       
+      <style>
+        .close-spacing {
+          margin-bottom: 5px; /* Adjust this value to increase/decrease spacing */
+        }
+      
+        .icon-spacing {
+          margin-top: 10px; /* Adjust this value to increase/decrease spacing between the icons */
+        }
+      </style>
+
       <!-- citation and icon code -->
       {% if post.author %}
-        <p>{{ post.author | replace: "Xueren Ge", "<strong>Xueren Ge</strong>" }}</p><br>
+        <p class="close-spacing">{{ post.author | replace: "Xueren Ge", "<strong>Xueren Ge</strong>" }}</p><br>
       {% endif %}
       {% if post.venue %}
-        <p>{{ post.venue }}</p><br>
+        <p class="close-spacing">{{ post.venue }}</p>
       {% endif %}
-      <p>
-        <br>
+      <div class="icon-spacing">
         {% if post.link %}
           <a href="{{ post.link }}"><i class="fas fa-fw fa-link zoom" aria-hidden="true"></i></a>
         {% endif %}
@@ -75,7 +84,7 @@
         {% if post.github %}
           <a href="{{ post.github }}"><i class="fab fa-fw fa-github zoom" aria-hidden="true"></i></a>
         {% endif %}
-      </p>
+      </div>
     {% elsif post.collection == 'posts' and post.date %}
       <p class="page__date"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
     {% endif %}
