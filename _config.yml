@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Xueren Ge"
+title                    : "Xueren Ge (葛学人)"
 title_separator          : "-"
 name                     : &name "Xueren Ge"
 description              : &description "personal description"
