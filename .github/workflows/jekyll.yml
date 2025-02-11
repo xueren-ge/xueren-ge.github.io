@@ -56,13 +56,6 @@ jobs:
         run: |
           gem install bundler
           bundle install
-      - name: Deploy to GitHub Pages
-        run: |
-          git config --global user.name "xueren-ge"  #
-          git config --global user.email "zar8jw@virginia.edu"
-          git add .
-          git commit -m "Deploy site"
-          git push origin gh-pages
 
   # Deployment job
   deploy:
