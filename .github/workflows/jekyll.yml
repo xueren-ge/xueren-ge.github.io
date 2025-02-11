@@ -34,9 +34,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Ruby
-        uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 # v1.161.0
+        # uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 # v1.161.0
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1' # Not needed with a .ruby-version file
+          ruby-version: '3.1.4' # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
       - name: Setup Pages
@@ -50,6 +51,17 @@ jobs:
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --global user.name "xueren-ge"  #
+          git config --global user.email "zar8jw@virginia.edu"
+          git add .
+          git commit -m "Deploy site"
+          git push origin gh-pages
 
   # Deployment job
   deploy:
