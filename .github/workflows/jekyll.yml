@@ -52,8 +52,6 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
       - name: Install dependencies
         run: |
           gem install bundler
