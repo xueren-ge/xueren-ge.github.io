@@ -185,7 +185,7 @@ collections:
     output: true
     permalink: /:collection/:path/
   research:
-    output: true
+    output: false
     permalink: /:collection/:path/
   talks:
     output: true
@@ -233,15 +233,15 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _research
-  # - scope:
-  #     path: ""
-  #     type: research
-  #   values:
-  #     layout: single
-  #     author_profile: true
-  #     share: true
-  #     comment: true
+  #_research
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comment: true
   # _talks
   - scope:
       path: ""
