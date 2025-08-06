@@ -11,7 +11,8 @@ title: "Service"
 ## Reviewer
 - ICRA 2024
 - ACM Transactions on Computing for Healthcare
-- NAACL 2025-Demo Track
+- NAACL 2025
+- ACL 2025
 
 ## Volunteer
 EMNLP 2024
