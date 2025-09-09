@@ -16,6 +16,7 @@ title: "Service"
 - ACL 2025
 - IJCAI 2025
 - AAAI 2026
+- NeurIPS 2025 Efficient Reasoning Workshop
 
 ## Volunteer
 EMNLP 2024
