@@ -19,4 +19,12 @@ title: "Service"
 - NeurIPS 2025 Efficient Reasoning Workshop
 
 ## Volunteer
-EMNLP 2024
+- EMNLP 2024
+- Link Lab Open House 2024
+
+## Mentoring
+- [Saahith Janapati](https://www.linkedin.com/in/saahithj/)
+- [Shruti Bala](https://www.linkedin.com/in/shruti-bala/)
+- [Sion Kim](https://www.linkedin.com/in/sion-kim-696ba91a4/)
+- [Abhishek Satpathy](https://www.linkedin.com/in/abhishek-satpathy-1b2b84270/)
+- [Sahil Murtaza](https://www.linkedin.com/in/sahil-murtaza-716338262/)
