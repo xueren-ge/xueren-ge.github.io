@@ -2,7 +2,7 @@
 title: "EgoEMS: A High-Fidelity Multimodal Egocentric Dataset for Cognitive Assistance in Emergency Medical Services"
 collection: publications
 permalink: /publication/EgoEMS
-date: 2025
+date: 2025-11-04
 venue: 'AAAI 2026 Artificial Intelligence for Social Impact Track (acceptance rate: 24.1%)'
 # paperurl: '/files/pdf/research/Human_Posture_Feature _Recognition_Method_for_Neuropsychological_Comprehension_Test.pdf'
 # project: 'https://xueren-ge.github.io/DKEC/'

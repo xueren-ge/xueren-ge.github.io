@@ -2,7 +2,7 @@
 title: "Real-Time Multimodal Cognitive Assistant for Emergency Medical Services"
 collection: publications
 permalink: /publication/IOTDI
-date: 2024
+date: 2024-01-20
 venue: '2024 IEEE/ACM Ninth International Conference on Internet-of-Things Design and Implementation (IoTDI)'
 author: 'Keshara Weerasinghe, Saahith Janapati, Xueren Ge, Sion Kim, Sneha Iyer, John A. Stankovic, Homa Alemzadeh'
 paperurl: 'https://arxiv.org/pdf/2403.06734'

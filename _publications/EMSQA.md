@@ -2,7 +2,7 @@
 title: "Expert-Guided Prompting and Retrieval-Augmented Generation for Emergency Medical Service Question Answering"
 collection: publications
 permalink: /publication/EMSQA
-date: 2025
+date: 2025-11-08
 venue: 'under review'
 paperurl: ''
 link: ''
