@@ -57,15 +57,16 @@
             {{ post.author | replace: "Xueren Ge", "<strong>Xueren Ge</strong>" }}
           {% endif %}
           {% if post.venue %}
-            <div class="pub-venue">
+            <span class="pub-venue">
               <em>{{ post.venue }}</em>
               {% if post.date %}
                 <span class="pub-year">({{ post.date | date: "%Y" }})</span>
               {% endif %}
-            </div>
+            </span>
           {% endif %}
         </p>
       {% endif %}
+
 
       <!-- Icon row -->
       <div class="icon-row">
