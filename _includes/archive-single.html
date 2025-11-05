@@ -44,47 +44,47 @@
     {% if post.collection == 'teaching' %}
       <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
     {% elsif post.collection == 'publications' %}
+
       {% if post.abstract %}
         <details><summary>Abstract</summary>
-        <blockquote>
-        <p>
-        {{ post.abstract }}
-        </p>
-        </blockquote>
+          <blockquote><p>{{ post.abstract }}</p></blockquote>
         </details>
       {% endif %}
-      
-      <style>
-        .close-spacing {
-          margin: 2px; /* Adjust this value to increase/decrease spacing */
-        }
-      
-        .icon-spacing {
-          margin-top: 5px; /* Adjust this value to increase/decrease spacing between the icons */
-        }
-      </style>
 
-      <!-- citation and icon code -->
+      <!-- Authors (bold your name) -->
       {% if post.author %}
-        <p class="close-spacing">{{ post.author | replace: "Xueren Ge", "<strong>Xueren Ge</strong>" }}</p>
+        <p class="close-spacing">
+          {{ post.author | replace: "Xueren Ge", "<strong>Xueren Ge</strong>" }}
+        </p>
       {% endif %}
+
+      <!-- Venue line (badge + year) -->
       {% if post.venue %}
-        <p class="close-spacing">{{ post.venue }}</p>
+        <p class="close-spacing">
+          <span class="conf-badge">{{ post.venue }}</span>
+          {% if post.date %}<span class="pub-year"> — {{ post.date | date: "%Y" }}</span>{% endif %}
+        </p>
       {% endif %}
-      <div class="icon-spacing">
-        {% if post.link %}
-          <a href="{{ post.link }}"><i class="fas fa-fw fa-link zoom" aria-hidden="true"></i></a>
-        {% endif %}
-        {% if post.paperurl %}
-          <a href="{{ post.paperurl }}"><i class="fas fa-fw fa-file-pdf zoom" aria-hidden="true"></i></a>
-        {% endif %}
-        {% if post.code %}
-          <a href="{{ post.code }}"><i class="fas fa-fw fa-code zoom" aria-hidden="true"></i></a>
-        {% endif %}
-        {% if post.github %}
-          <a href="{{ post.github }}"><i class="fab fa-fw fa-github zoom" aria-hidden="true"></i></a>
-        {% endif %}
+
+      <!-- Icon row -->
+      <div class="icon-row">
+        {% assign website = post.project | default: post.website %}
+        {% if website %}<a href="{{ website }}" target="_blank" rel="noopener" title="Project page"><i class="fas fa-fw fa-globe"></i></a>{% endif %}
+
+        {% if post.link %}<a href="{{ post.link }}" target="_blank" rel="noopener" title="Publisher / ACL page"><i class="fas fa-fw fa-link"></i></a>{% endif %}
+        {% if post.paperurl %}<a href="{{ post.paperurl }}" target="_blank" rel="noopener" title="PDF"><i class="fas fa-fw fa-file-pdf"></i></a>{% endif %}
+        {% if post.arxiv %}<a href="{{ post.arxiv }}" target="_blank" rel="noopener" title="arXiv"><i class="ai ai-arxiv ai-fw"></i></a>{% endif %}
+
+        {% if post.slides %}<a href="{{ post.slides }}" target="_blank" rel="noopener" title="Slides"><i class="fas fa-fw fa-file-powerpoint"></i></a>{% endif %}
+        {% if post.video %}<a href="{{ post.video }}" target="_blank" rel="noopener" title="Video"><i class="fab fa-fw fa-youtube"></i></a>{% endif %}
+        {% if post.poster %}<a href="{{ post.poster }}" target="_blank" rel="noopener" title="Poster"><i class="fas fa-fw fa-image"></i></a>{% endif %}
+        {% if post.supp %}<a href="{{ post.supp }}" target="_blank" rel="noopener" title="Supplementary"><i class="fas fa-fw fa-folder-open"></i></a>{% endif %}
+        {% if post.dataset %}<a href="{{ post.dataset }}" target="_blank" rel="noopener" title="Dataset"><i class="fas fa-fw fa-database"></i></a>{% endif %}
+
+        {% if post.code %}<a href="{{ post.code }}" target="_blank" rel="noopener" title="Code"><i class="fas fa-fw fa-code"></i></a>{% endif %}
+        {% if post.github %}<a href="{{ post.github }}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-fw fa-github"></i></a>{% endif %}
       </div>
+
     {% elsif post.collection == 'posts' and post.date %}
       <p class="page__date"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
     {% endif %}
