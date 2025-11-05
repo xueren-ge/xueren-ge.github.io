@@ -42,17 +42,26 @@
 
 @import "custom";
 
-/* Put venue on its own line, make it italic, keep spacing tight */
-.pub-venue {
-  display: block;          /* forces a line break under authors */
-  margin: .15rem 0 .35rem; /* compact spacing */
+/* Tight, consistent spacing for publications only */
+.archive__item .pub-authors,
+.archive__item .pub-venue,
+.archive__item .pub-icons {
+  margin: .2rem 0;        /* compact vertical rhythm */
   line-height: 1.35;
 }
-.pub-venue em { font-style: italic; }
 
-/* Style the year and make sure no theme-inserted bullets appear */
-.pub-year {
-  color: #6b7280;          /* muted */
-  margin-left: .35rem;
+/* Put venue on its own line, italic, with muted year */
+.archive__item .pub-venue { display: block; }
+.archive__item .pub-venue em { font-style: italic; }
+.archive__item .pub-year { color: #6b7280; margin-left: .35rem; }
+
+/* Icons row: tight and aligned */
+.archive__item .pub-icons {
+  display: inline-flex;
+  gap: .6rem;             /* space between icons */
+  margin-top: .15rem;     /* sits right under venue */
 }
-.pub-year::before { content: ""; }   /* override any theme “·” separator */
+
+/* If any paragraphs slip in, kill default margins here only */
+.archive__item .pub-authors p,
+.archive__item .pub-venue p { margin: 0; }
