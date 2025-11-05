@@ -41,3 +41,18 @@
 @import "print";
 
 @import "custom";
+
+/* Put venue on its own line, make it italic, keep spacing tight */
+.pub-venue {
+  display: block;          /* forces a line break under authors */
+  margin: .15rem 0 .35rem; /* compact spacing */
+  line-height: 1.35;
+}
+.pub-venue em { font-style: italic; }
+
+/* Style the year and make sure no theme-inserted bullets appear */
+.pub-year {
+  color: #6b7280;          /* muted */
+  margin-left: .35rem;
+}
+.pub-year::before { content: ""; }   /* override any theme “·” separator */
