@@ -3,10 +3,9 @@ title: "DKEC: Domain Knowledge Enhanced Multi-Label Classification for Diagnosis
 collection: publications
 permalink: /publication/DKEC
 date: 2024-09-20
-venue: 'The 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP main conference 2024)'
-# paperurl: '/files/pdf/research/Human_Posture_Feature _Recognition_Method_for_Neuropsychological_Comprehension_Test.pdf'
-project: 'https://xueren-ge.github.io/DKEC/'
-link: 'https://aclanthology.org/2024.emnlp-main.712/'
+venue: 'The 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP main conference 2024, acceptance rate: 18.4%)'
+paperurl: 'https://aclanthology.org/2024.emnlp-main.712/'
+link: 'https://xueren-ge.github.io/DKEC/'
 author: "Xueren Ge, Satpathy Abhishek, Ronald Dean Williams, John A. Stankovic, Homa Alemzadeh"
 # code: 'https://journals.sagepub.com/doi/suppl/10.1177/07388942211015242'
 github: 'https://github.com/UVA-DSA/DKEC'
