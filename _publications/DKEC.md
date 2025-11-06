@@ -8,7 +8,7 @@ paperurl: 'https://aclanthology.org/2024.emnlp-main.712/'
 project: 'https://xueren-ge.github.io/DKEC/'
 author: "Xueren Ge, Satpathy Abhishek, Ronald Dean Williams, John A. Stankovic, Homa Alemzadeh"
 # code: 'https://journals.sagepub.com/doi/suppl/10.1177/07388942211015242'
-github: 'https://github.com/UVA-DSA/DKEC'
+github: 'https://github.com/xueren-ge/DKEC'
 citation: '@inproceedings{ge-etal-2024-dkec,
     title = "{DKEC}: Domain Knowledge Enhanced Multi-Label Classification for Diagnosis Prediction",
     author = "Ge, Xueren  and
