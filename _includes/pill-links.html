@@ -1,0 +1,55 @@
+{%- assign pills = "" | split: "" -%}
+
+{%- if include.project -%}
+  {%- assign pills = pills | push: 
+  '<a class="pill" href="' | append: include.project | append: 
+  '" target="_blank" rel="noopener"><span class="icon">🌐</span><span>Project</span></a>' -%}
+{%- endif -%}
+
+{%- if include.paper -%}
+  {%- assign pills = pills | push: 
+  '<a class="pill" href="' | append: include.paper | append: 
+  '" target="_blank" rel="noopener"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a>' -%}
+{%- endif -%}
+
+{%- if include.supp -%}
+  {%- assign pills = pills | push: 
+  '<a class="pill" href="' | append: include.supp | append: 
+  '" target="_blank" rel="noopener"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Supplementary</span></a>' -%}
+{%- endif -%}
+
+{%- if include.code -%}
+  {%- assign pills = pills | push: 
+  '<a class="pill" href="' | append: include.code | append: 
+  '" target="_blank" rel="noopener"><span class="icon"><i class="fab fa-github"></i></span><span>Code</span></a>' -%}
+{%- endif -%}
+
+{%- if include.video -%}
+  {%- assign pills = pills | push: 
+  '<a class="pill" href="' | append: include.video | append: 
+  '" target="_blank" rel="noopener"><span class="icon"><i class="fab fa-youtube"></i></span><span>Video</span></a>' -%}
+{%- endif -%}
+
+{%- if include.slides -%}
+  {%- assign pills = pills | push: 
+  '<a class="pill" href="' | append: include.slides | append: 
+  '" target="_blank" rel="noopener"><span class="icon"><i class="fas fa-file-powerpoint"></i></span><span>Slides</span></a>' -%}
+{%- endif -%}
+
+{%- if include.dataset -%}
+  {%- assign pills = pills | push:
+  '<a class="pill" href="' | append: include.dataset | append:
+  '" target="_blank" rel="noopener"><span class="icon">🤗</span><span>Dataset</span></a>' -%}
+{%- endif -%}
+
+{%- if include.kb -%}
+  {%- assign pills = pills | push:
+  '<a class="pill" href="' | append: include.kb | append:
+  '" target="_blank" rel="noopener"><span class="icon">🧠</span><span>Knowledge&nbsp;Base</span></a>' -%}
+{%- endif -%}
+
+{%- if pills.size > 0 -%}
+<div class="pill-row">
+  {{ pills | join: "" }}
+</div>
+{%- endif -%}
