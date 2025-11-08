@@ -3,7 +3,7 @@ title: "Expert-Guided Prompting and Retrieval-Augmented Generation for Emergency
 collection: publications
 permalink: /publication/EMSQA
 date: 2025-11-08
-venue: 'under review'
+venue: 'AAAI 2026 Artificial Intelligence main track (acceptance rate: 17.6%)'
 paperurl: ''
 project: 'https://xueren-ge.github.io/Expert-Guided-Prompting-and-Retrieval-Augmented-Generation-for-EMS-Question-Answering/'
 author: "Xueren Ge, Sahil Murtaza, Anthony Cortez, Homa Alemzadeh "
