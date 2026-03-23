@@ -5,24 +5,14 @@ title: "Service"
 
 
 
-## Teaching assistant
+## Teaching
 - Statistical Machine Learning (Spring 2022), Georgia Institute of Technology
 - Dependable Computing System (Fall 2025), University of Virginia
 
 ## Reviewer
-### 2026
-- IJCAI 2026
-
-### 2025
-- ACM Transactions on Computing for Healthcare
-- NAACL 2025
-- ACL 2025
-- IJCAI 2025
-- AAAI 2026
-- NeurIPS 2025
-
-### 2024
-- ICRA 2024
+- **2026**: IJCAI 2026, ICLR 2026
+- **2025**: ACM Transactions on Computing for Healthcare, NAACL 2025, ACL 2025, IJCAI 2025, AAAI 2026, NeurIPS 2025
+- **2024**: ICRA 2024
 
 ## Volunteer
 - AAAI 2026
