@@ -5,7 +5,7 @@ title: "Service"
 
 
 
-## Teaching
+## Teaching Assistant
 - Statistical Machine Learning (Spring 2022), Georgia Institute of Technology
 - Dependable Computing System (Fall 2025), University of Virginia
 
