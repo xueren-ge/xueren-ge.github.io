@@ -10,15 +10,22 @@ title: "Service"
 - Dependable Computing System (Fall 2025), University of Virginia
 
 ## Reviewer
-- ICRA 2024
+### 2026
+- IJCAI 2026
+
+### 2025
 - ACM Transactions on Computing for Healthcare
 - NAACL 2025
 - ACL 2025
 - IJCAI 2025
 - AAAI 2026
-- NeurIPS 2025 Efficient Reasoning Workshop
+- NeurIPS 2025
+
+### 2024
+- ICRA 2024
 
 ## Volunteer
+- AAAI 2026
 - EMNLP 2024
 - Link Lab Open House 2024
 
