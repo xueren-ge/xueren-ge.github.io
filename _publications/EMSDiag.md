@@ -5,7 +5,7 @@ permalink: /publication/EMSDiag
 date: 2026-04-04
 venue: 'The 64th Annual Meeting of the Association for Computational Linguistics (ACL Findings)'
 paperurl: ''
-project: ''
+project: 'https://uva-dsa.github.io/EMSDialog/'
 author: "Xueren Ge, Sahil Murtaza, Anthony Cortez, Homa Alemzadeh "
 # code: 'https://journals.sagepub.com/doi/suppl/10.1177/07388942211015242'
 github: ''
