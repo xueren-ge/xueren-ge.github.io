@@ -3,7 +3,7 @@ title: "EMSDialog: Synthetic Multi-person Emergency Medical Service Dialogue Gen
 collection: publications
 permalink: /publication/EMSDiag
 date: 2026-04-04
-venue: 'The 64th Annual Meeting of the Association for Computational Linguistics (ACL Findings)'
+venue: 'The 64th Annual Meeting of the Association for Computational Linguistics (ACL Findings), 2026. (Acceptance Rate: 37%)'
 paperurl: ''
 project: 'https://uva-dsa.github.io/EMSDialog/'
 author: "Xueren Ge, Sahil Murtaza, Anthony Cortez, Homa Alemzadeh "
