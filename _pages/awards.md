@@ -4,6 +4,7 @@ title: "Awards"
 ---
 
 ## Awards
+- AAAI-26 Student Scholarship and Volunteer Program, 2026
 - Georgia Tech Shenzhen Campus Level A “Merit-Based Scholarship”, 2020 (Top 5%);
 - Chongqing University Excellent Undergraduate, 2019 (Top 10%)
 - Chongqing University Excellent Student, 2018 (Top 5%);

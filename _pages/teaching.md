@@ -10,14 +10,14 @@ title: "Service"
 - Dependable Computing System (Fall 2025), University of Virginia
 
 ## Reviewer
-- **2026**: IJCAI 2026, ICLR 2026
-- **2025**: ACM Transactions on Computing for Healthcare, NAACL 2025, ACL 2025, IJCAI 2025, AAAI 2026, NeurIPS 2025
-- **2024**: ICRA 2024
+- **2026**: IJCAI, ICLR, NeurIPS
+- **2025**: ACM Transactions on Computing for Healthcare, NAACL, ACL, IJCAI, AAAI, NeurIPS
+- **2024**: ICRA
 
 ## Volunteer
-- AAAI 2026
-- EMNLP 2024
-- Link Lab Open House 2024
+- **2024**: EMNLP; LinkLab Open House;
+- **2025**: Link Lab FlashTalk; Link Lab Research Day;
+- **2026**: AAAI; LinkLab Open House;
 
 ## Mentoring
 - [Saahith Janapati](https://www.linkedin.com/in/saahithj/)
