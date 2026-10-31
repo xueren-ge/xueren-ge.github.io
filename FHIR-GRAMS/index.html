@@ -46,10 +46,38 @@
     @media (max-width: 768px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 
     .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
-    .method-grid.three { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 1.5rem; }
+    .method-grid.three { grid-template-columns: repeat(3, 1fr); margin-top: 1.5rem; }
+    @media (max-width: 768px) { .method-grid.three { grid-template-columns: 1fr; } }
     .norm-row { margin-top: 1rem; }
     .norm-title { font-family: 'Google Sans', sans-serif; color: var(--accent); }
-    .norm-row figure.paper-fig img { max-width: 380px; border: 1px solid var(--line); }
+    .nf { display: grid; grid-template-columns: minmax(0,1.15fr) auto minmax(0,1fr); gap: 1rem; align-items: center; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem; margin-top: 1rem; }
+    .nf > div { min-width: 0; }
+    .nf-h { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .9rem; color: var(--ink); margin-bottom: .5rem; }
+    .nf-h span { font-weight: 400; color: var(--muted); }
+    .nf-res { display: grid; gap: .45rem; }
+    .nf-card { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 7px; padding: .4rem .6rem; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: .72rem; line-height: 1.5; color: var(--ink); overflow-wrap: anywhere; }
+    .nf-card .t { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .8rem; display: flex; align-items: center; gap: .35rem; margin-bottom: .1rem; }
+    .nf-card .k { color: var(--muted); }
+    .nf-card .v { color: #1b7f5a; }
+    .nf-card .ref { color: #4b3f9e; }
+    .nf-b { display: inline-flex; align-items: center; justify-content: center; width: 1.25em; height: 1.25em; border-radius: 50%; background: var(--c); color: #fff; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .72rem; flex: none; }
+    .nf-mid { display: flex; flex-direction: column; align-items: center; gap: .35rem; color: var(--accent); }
+    .nf-step { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .78rem; background: #fff; border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .65rem; white-space: nowrap; }
+    .nf-arrow { font-size: 1.4rem; line-height: 1; }
+    .nf-view { background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: .6rem .7rem; box-shadow: 4px 4px 0 var(--accent-soft), 8px 8px 0 #dfeee7; }
+    .nf-view .nf-h { color: var(--accent); }
+    .nf-row { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: .45rem; align-items: center; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: .74rem; padding: .22rem 0; border-top: 1px dashed var(--line); }
+    .nf-row:first-of-type { border-top: none; }
+    .nf-row .f { color: var(--ink); overflow-wrap: anywhere; }
+    .nf-row .v { color: #1b7f5a; white-space: nowrap; }
+    .nf-foot { font-size: .75rem; color: var(--muted); margin-top: .45rem; text-align: left; }
+    .cR { --c: #d9608f; } .cM { --c: #1a9a8c; } .cD { --c: #e07b39; } .cA { --c: #b8860b; }
+    @media (max-width: 768px) {
+      .nf { grid-template-columns: 1fr; }
+      .nf-mid { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      .nf-arrow { transform: rotate(90deg); }
+      .nf-row .v { white-space: normal; overflow-wrap: anywhere; text-align: right; }
+    }
     .method-card { border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; background: #fff; }
     .method-card h4 { font-family: 'Google Sans', sans-serif; font-weight: 700; margin-bottom: .4rem; color: var(--accent); }
     .method-card p { font-size: .95rem; text-align: left; }
@@ -148,19 +176,46 @@
     <div class="content">
       <p>A patient's FHIR record is a graph of typed, nested JSON resources linked by references. A single clinical event is often split across resources: a prescription may carry no drug name and only point to a separate <code>Medication</code> resource, while the dispense record spells the same drug differently. FHIR-GRAMS separates <em>evidence processing</em> from <em>answer composition</em>.</p>
     </div>
-    <div class="columns is-vcentered norm-row">
-      <div class="column is-7 content">
-        <h4 class="norm-title"><i class="fas fa-project-diagram"></i> Hierarchical FHIR graph normalization</h4>
-        <p>Every resource is flattened into path–value pairs, and a hand-written map assigns each path a canonical field name. Resources that belong to one clinical entity are then merged into a single <strong>canonical view</strong>: a medication request, the <code>Medication</code> it references, and its dispenses and administrations become one flat medication view.</p>
-        <p>Every entry keeps the resource it came from, so the agents read compact, consistently named fields while each value stays traceable to the record. Views are computed once per patient and form a layer above the original resource graph.</p>
-      </div>
-      <div class="column is-5">
-        <figure class="paper-fig">
-          <img src="static/images/fhiragent-normalization.png" alt="Raw FHIR resources linked by reference (a) are lifted into canonical views (b).">
-          <figcaption>(a) Raw resources linked by reference; (b) the canonical medication view built from them.</figcaption>
-        </figure>
-      </div>
+    <div class="norm-row content">
+      <h4 class="norm-title"><i class="fas fa-project-diagram"></i> Hierarchical FHIR graph normalization</h4>
+      <p>Every resource is flattened into path–value pairs, and a hand-written map assigns each path a canonical field name. Resources that belong to one clinical entity are then merged into a single <strong>canonical view</strong>: a medication request, the <code>Medication</code> it references, and its dispenses and administrations become one flat medication view. Every entry keeps the resource it came from, so the agents read compact, consistently named fields while each value stays traceable to the record. Views are computed once per patient and form a layer above the original resource graph.</p>
     </div>
+    <figure class="nf" aria-label="Four linked FHIR resources are flattened, canonicalized and merged into one canonical medication view.">
+      <div>
+        <div class="nf-h">Resource layer <span>· nested JSON, linked by reference</span></div>
+        <div class="nf-res">
+          <div class="nf-card cR"><div class="t"><span class="nf-b">R</span>MedicationRequest</div>
+            <span class="k">status</span>: <span class="v">"active"</span><br>
+            <span class="k">dosageInstruction[0].doseAndRate[0].doseQuantity</span>: <span class="v">30 mL</span><br>
+            <span class="k">medicationReference</span>: <span class="ref">→ Medication/m1</span></div>
+          <div class="nf-card cM"><div class="t"><span class="nf-b">M</span>Medication</div>
+            <span class="k">code.coding[0].code</span>: <span class="v">"46287-0006"</span><br>
+            <span class="k">code.coding[0].display</span>: <span class="v">"Sodium Poly…"</span></div>
+          <div class="nf-card cD"><div class="t"><span class="nf-b">D</span>MedicationDispense</div>
+            <span class="k">quantity</span>: <span class="v">15 g</span> &nbsp;<span class="k">authorizingPrescription</span>: <span class="ref">→ R</span></div>
+          <div class="nf-card cA"><div class="t"><span class="nf-b">A</span>MedicationAdministration</div>
+            <span class="k">dosage.route</span>: <span class="v">"NG tube"</span> &nbsp;<span class="k">request</span>: <span class="ref">→ R</span></div>
+        </div>
+      </div>
+      <div class="nf-mid">
+        <span class="nf-step">flatten</span>
+        <span class="nf-step">canonicalize</span>
+        <span class="nf-step">merge</span>
+        <span class="nf-arrow"><i class="fas fa-arrow-right"></i></span>
+      </div>
+      <div>
+        <div class="nf-view">
+          <div class="nf-h">Canonical medication view</div>
+          <div class="nf-row cM"><span class="nf-b">M</span><span class="f">medication.name</span><span class="v">"Sodium Poly…"</span></div>
+          <div class="nf-row cM"><span class="nf-b">M</span><span class="f">medication.code</span><span class="v">"46287-0006"</span></div>
+          <div class="nf-row cR"><span class="nf-b">R</span><span class="f">request.status</span><span class="v">"active"</span></div>
+          <div class="nf-row cR"><span class="nf-b">R</span><span class="f">request.dose</span><span class="v">"30 mL"</span></div>
+          <div class="nf-row cD"><span class="nf-b">D</span><span class="f">dispense.quantity</span><span class="v">"15 g"</span></div>
+          <div class="nf-row cA"><span class="nf-b">A</span><span class="f">administration.route</span><span class="v">"NG tube"</span></div>
+        </div>
+        <div class="nf-foot">One view per anchor resource; the badge on each field records its source.</div>
+      </div>
+    </figure>
     <div class="method-grid three">
       <div class="method-card">
         <h4><i class="fas fa-route"></i> Planner</h4>
