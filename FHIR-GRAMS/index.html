@@ -39,10 +39,11 @@
     figure.paper-fig img { width: 100%; height: auto; border-radius: 6px; }
     figure.paper-fig figcaption { color: var(--muted); font-size: .95rem; margin-top: .6rem; text-align: center; }
 
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-    .stat { background: var(--accent-soft); border-radius: 10px; padding: 1rem 1.1rem; text-align: center; }
-    .stat .num { font-family: 'Google Sans', sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--accent); line-height: 1.1; }
-    .stat .lbl { font-size: .9rem; color: var(--muted); margin-top: .3rem; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-top: 1.5rem; }
+    .stat { background: var(--accent-soft); border-radius: 10px; padding: .9rem .7rem; text-align: center; }
+    .stat .num { font-family: 'Google Sans', sans-serif; font-size: 1.55rem; font-weight: 700; color: var(--accent); line-height: 1.15; white-space: nowrap; }
+    .stat .lbl { font-size: .82rem; color: var(--muted); margin-top: .35rem; line-height: 1.35; }
+    @media (max-width: 768px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 
     .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
     .method-grid.three { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 1.5rem; }
@@ -122,10 +123,10 @@
       <figcaption>FHIR-GRAMS first normalizes the FHIR graph into canonical clinical views, then a planner routes the question to resource-specific specialists that keep only the relevant fields, and a composer answers with retrieved skills and deterministic atomic tools.</figcaption>
     </figure>
     <div class="stats">
-      <div class="stat"><div class="num">+11.6 / +8.0</div><div class="lbl">judged accuracy points over the strongest baseline (two Gemini backbones)</div></div>
-      <div class="stat"><div class="num">100% / 96.7%</div><div class="lbl">on MedAgentBench v1 / v2 with Gemini-3.1-Flash-Lite</div></div>
-      <div class="stat"><div class="num">up to 2.1×</div><div class="lbl">fewer tokens per query than the skill-optimized GRASP agent</div></div>
-      <div class="stat"><div class="num">4</div><div class="lbl">FHIR QA benchmarks, best exact match on every one</div></div>
+      <div class="stat"><div class="num">+11.6 / +8.0</div><div class="lbl">judged-accuracy points over the best baseline (two Gemini backbones)</div></div>
+      <div class="stat"><div class="num">100% / 96.7%</div><div class="lbl">on MedAgentBench v1 / v2 (Gemini-3.1-Flash-Lite)</div></div>
+      <div class="stat"><div class="num">up to 2.1×</div><div class="lbl">fewer tokens per query than GRASP</div></div>
+      <div class="stat"><div class="num">4 / 4</div><div class="lbl">benchmarks with the best exact match</div></div>
     </div>
   </div>
 </section>
