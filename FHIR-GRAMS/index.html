@@ -45,6 +45,10 @@
     .stat .lbl { font-size: .9rem; color: var(--muted); margin-top: .3rem; }
 
     .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .method-grid.three { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 1.5rem; }
+    .norm-row { margin-top: 1rem; }
+    .norm-title { font-family: 'Google Sans', sans-serif; color: var(--accent); }
+    .norm-row figure.paper-fig img { max-width: 380px; border: 1px solid var(--line); }
     .method-card { border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; background: #fff; }
     .method-card h4 { font-family: 'Google Sans', sans-serif; font-weight: 700; margin-bottom: .4rem; color: var(--accent); }
     .method-card p { font-size: .95rem; text-align: left; }
@@ -143,11 +147,20 @@
     <div class="content">
       <p>A patient's FHIR record is a graph of typed, nested JSON resources linked by references. A single clinical event is often split across resources: a prescription may carry no drug name and only point to a separate <code>Medication</code> resource, while the dispense record spells the same drug differently. FHIR-GRAMS separates <em>evidence processing</em> from <em>answer composition</em>.</p>
     </div>
-    <div class="method-grid">
-      <div class="method-card">
-        <h4><i class="fas fa-project-diagram"></i> Graph normalization</h4>
-        <p>Every resource is flattened into path–value pairs, and a hand-written map lifts linked resources into one <strong>canonical view</strong> per clinical entity (e.g., request + medication + dispense + administration → one medication view), keeping each value's source resource.</p>
+    <div class="columns is-vcentered norm-row">
+      <div class="column is-7 content">
+        <h4 class="norm-title"><i class="fas fa-project-diagram"></i> Hierarchical FHIR graph normalization</h4>
+        <p>Every resource is flattened into path–value pairs, and a hand-written map assigns each path a canonical field name. Resources that belong to one clinical entity are then merged into a single <strong>canonical view</strong>: a medication request, the <code>Medication</code> it references, and its dispenses and administrations become one flat medication view.</p>
+        <p>Every entry keeps the resource it came from, so the agents read compact, consistently named fields while each value stays traceable to the record. Views are computed once per patient and form a layer above the original resource graph.</p>
       </div>
+      <div class="column is-5">
+        <figure class="paper-fig">
+          <img src="static/images/fhiragent-normalization.png" alt="Raw FHIR resources linked by reference (a) are lifted into canonical views (b).">
+          <figcaption>(a) Raw resources linked by reference; (b) the canonical medication view built from them.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="method-grid three">
       <div class="method-card">
         <h4><i class="fas fa-route"></i> Planner</h4>
         <p>Reads only the question and selects the view types it involves, guided by a routing skill, so the decision does not grow with the size of the record.</p>
@@ -161,10 +174,6 @@
         <p>Retrieves the top-<em>K</em> procedure skills (temporal reasoning, code matching, cross-resource integration) and plans chains of <strong>13 deterministic atomic tools</strong> in a plan-and-execute loop for up to <em>N</em> rounds.</p>
       </div>
     </div>
-    <figure class="paper-fig" style="max-width:420px; margin-top:2rem">
-      <img src="static/images/fhiragent-overview.png" alt="Raw FHIR resources and their canonical views.">
-      <figcaption>Raw FHIR resources (a) and the canonical views built from them (b).</figcaption>
-    </figure>
   </div>
 </section>
 
