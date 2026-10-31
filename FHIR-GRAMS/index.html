@@ -110,7 +110,7 @@
     .tr-step.pl { --rc: #2f55b8; --rs: #e7edfb; }
     .tr-step.sp { --rc: var(--accent); --rs: var(--accent-soft); }
     .tr-step.co { --rc: #6a4fc0; --rs: #efe9fb; }
-    .tr-step.ans { --rc: #b53a2e; --rs: #fcebe8; }
+    .tr-step.ans { --rc: var(--accent); --rs: var(--accent-soft); }
     .tr-body { min-width: 0; font-size: .9rem; }
     .tr-q { font-family: 'Google Sans', sans-serif; font-size: 1.05rem; font-weight: 500; }
     .caret { display: none; width: 2px; height: 1.05em; background: var(--ink); vertical-align: -.15em; margin-left: 2px; animation: tr-blink 1s step-end infinite; }
@@ -149,7 +149,7 @@
     .tools { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .3rem; }
     .tools .chip { font-size: .7rem; padding: .05rem .5rem; transition: background .3s, color .3s, border-color .3s; }
     .tools .chip.used { background: #6a4fc0; border-color: #6a4fc0; color: #fff; }
-    .tr-ans { font-family: 'Google Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: #b53a2e; }
+    .tr-ans { font-family: 'Google Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--accent); }
     .tr-cap { font-size: .82rem; color: var(--muted); margin-top: .6rem; text-align: center; }
     @media (max-width: 768px) {
       .tr-step { grid-template-columns: 1fr; gap: .3rem; }
