@@ -50,34 +50,114 @@
     @media (max-width: 768px) { .method-grid.three { grid-template-columns: 1fr; } }
     .norm-row { margin-top: 1rem; }
     .norm-title { font-family: 'Google Sans', sans-serif; color: var(--accent); }
-    .nf { display: grid; grid-template-columns: minmax(0,1.15fr) auto minmax(0,1fr); gap: 1rem; align-items: center; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem; margin-top: 1rem; }
-    .nf > div { min-width: 0; }
-    .nf-h { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .9rem; color: var(--ink); margin-bottom: .5rem; }
-    .nf-h span { font-weight: 400; color: var(--muted); }
-    .nf-res { display: grid; gap: .45rem; }
-    .nf-card { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 7px; padding: .4rem .6rem; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: .72rem; line-height: 1.5; color: var(--ink); overflow-wrap: anywhere; }
-    .nf-card .t { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .8rem; display: flex; align-items: center; gap: .35rem; margin-bottom: .1rem; }
-    .nf-card .k { color: var(--muted); }
-    .nf-card .v { color: #1b7f5a; }
-    .nf-card .ref { color: #4b3f9e; }
-    .nf-b { display: inline-flex; align-items: center; justify-content: center; width: 1.25em; height: 1.25em; border-radius: 50%; background: var(--c); color: #fff; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .72rem; flex: none; }
-    .nf-mid { display: flex; flex-direction: column; align-items: center; gap: .35rem; color: var(--accent); }
-    .nf-step { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .78rem; background: #fff; border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .65rem; white-space: nowrap; }
-    .nf-arrow { font-size: 1.4rem; line-height: 1; }
-    .nf-view { background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: .6rem .7rem; box-shadow: 4px 4px 0 var(--accent-soft), 8px 8px 0 #dfeee7; }
-    .nf-view .nf-h { color: var(--accent); }
-    .nf-row { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: .45rem; align-items: center; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: .74rem; padding: .22rem 0; border-top: 1px dashed var(--line); }
-    .nf-row:first-of-type { border-top: none; }
-    .nf-row .f { color: var(--ink); overflow-wrap: anywhere; }
-    .nf-row .v { color: #1b7f5a; white-space: nowrap; }
-    .nf-foot { font-size: .75rem; color: var(--muted); margin-top: .45rem; text-align: left; }
+    figure.nf { margin: .5rem 0 0; }
+    .nf-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .nf-svg { width: 100%; height: auto; display: block; }
+    .nf-svg text { font-family: 'Noto Sans', sans-serif; fill: var(--ink); }
+    .nf-t { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 15px; }
+    .nf-acc { fill: var(--accent); }
+    .nf-sub { font-family: 'Noto Sans', sans-serif; font-weight: 400; font-size: 11.5px; fill: var(--muted); }
+    .nf-mid1 { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 13px; fill: var(--accent); }
+    .nf-name { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 12.5px; }
+    .nf-path { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; fill: #3b4653; }
+    .nf-ref-t { fill: #7b61c9; }
+    .nf-bl { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 9.5px; fill: #fff; }
+    .nf-field { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; font-weight: 600; }
+    .nf-value { font-size: 11px; }
+    .nf-box { fill: #fff; stroke: #d5dbe1; stroke-width: 1; }
+    .nf-head { fill: var(--c); fill-opacity: .13; }
+    .nf-badge { fill: var(--c); }
+    .nf-vbox { fill: #fff; stroke: var(--accent); stroke-width: 1.5; }
+    .nf-vhead { fill: var(--accent-soft); }
+    .nf-vtitle { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 12.5px; fill: var(--accent); }
+    .nf-hirow { fill: var(--accent-soft); fill-opacity: .6; }
+    .nf-sep { stroke: var(--line); }
+    .nf-link { fill: none; stroke: #c3ccd5; stroke-width: 1.6; }
+    .nf-link.hi { stroke: var(--accent); stroke-width: 2.2; }
+    .nf-dot { fill: #c3ccd5; } .nf-dot.hi { fill: var(--accent); }
+    .nf-ref { fill: none; stroke: #7b61c9; stroke-width: 1.4; }
     .cR { --c: #d9608f; } .cM { --c: #1a9a8c; } .cD { --c: #e07b39; } .cA { --c: #b8860b; }
-    @media (max-width: 768px) {
-      .nf { grid-template-columns: 1fr; }
-      .nf-mid { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-      .nf-arrow { transform: rotate(90deg); }
-      .nf-row .v { white-space: normal; overflow-wrap: anywhere; text-align: right; }
+    .nf-link, .nf-ref { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .9s ease var(--d, 0s); }
+    .nf.play .nf-link, .nf.play .nf-ref { stroke-dashoffset: 0; }
+    .nf-val, .nf-dot { opacity: 0; transition: opacity .5s ease calc(var(--d, 0s) + .45s); }
+    .nf.play .nf-val, .nf.play .nf-dot { opacity: 1; }
+    figure.nf figcaption { color: var(--muted); font-size: .9rem; margin-top: .5rem; text-align: center; }
+    @media (max-width: 768px) { .nf-svg { min-width: 860px; } }
+    @media (prefers-reduced-motion: reduce) {
+      .nf-link, .nf-ref { stroke-dashoffset: 0; transition: none; }
+      .nf-val, .nf-dot { opacity: 1; transition: none; }
     }
+
+    /* worked example trace */
+    .trace { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1.1rem 1rem; margin-top: 1rem; }
+    .trace-bar { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; padding-bottom: .7rem; border-bottom: 1px solid var(--line); }
+    .tbtn { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .8rem; border: 1px solid var(--accent); color: var(--accent); background: #fff; border-radius: 999px; padding: .28rem .8rem; cursor: pointer; line-height: 1.2; }
+    .tbtn:hover { background: var(--accent-soft); }
+    .tbtn.primary { background: var(--accent); color: #fff; }
+    .tbtn.primary:hover { background: #25593f; }
+    .tr-prog { margin-left: auto; font-size: .8rem; color: var(--muted); }
+    .tr-steps { min-height: 3rem; }
+    .tr-hint { color: var(--muted); font-size: .85rem; padding: 1rem 0 .4rem; text-align: center; }
+    .tr-step { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: .8rem; padding: .7rem 0; border-top: 1px dashed var(--line); }
+    .tr-step:first-of-type { border-top: none; }
+    .tr-step:not(.on) { display: none; }
+    .tr-step.on { animation: tr-up .45s ease both; }
+    @keyframes tr-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .tr-role { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .85rem; color: var(--rc, var(--ink)); display: flex; align-items: center; gap: .45rem; padding-top: .1rem; }
+    .tr-role i { width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--rs, #eef1f4); color: var(--rc, var(--ink)); display: inline-flex; align-items: center; justify-content: center; font-size: .7rem; flex: none; }
+    .tr-step.q { --rc: #1f2933; --rs: #eef1f4; }
+    .tr-step.rec { --rc: #5f6b76; --rs: #f1f3f5; }
+    .tr-step.pl { --rc: #2f55b8; --rs: #e7edfb; }
+    .tr-step.sp { --rc: var(--accent); --rs: var(--accent-soft); }
+    .tr-step.co { --rc: #6a4fc0; --rs: #efe9fb; }
+    .tr-step.ans { --rc: #b53a2e; --rs: #fcebe8; }
+    .tr-body { min-width: 0; font-size: .9rem; }
+    .tr-q { font-family: 'Google Sans', sans-serif; font-size: 1.05rem; font-weight: 500; }
+    .caret { display: none; width: 2px; height: 1.05em; background: var(--ink); vertical-align: -.15em; margin-left: 2px; animation: tr-blink 1s step-end infinite; }
+    .trace.typing .caret { display: inline-block; }
+    @keyframes tr-blink { 50% { opacity: 0; } }
+    .chips { display: flex; flex-wrap: wrap; gap: .35rem; margin: .2rem 0 .35rem; align-items: center; }
+    .chips .grp { font-size: .76rem; color: var(--muted); margin-right: .15rem; }
+    .chip { display: inline-flex; align-items: center; gap: .3rem; border-radius: 999px; padding: .1rem .6rem; font-size: .78rem; font-family: ui-monospace, Menlo, Consolas, monospace; border: 1px solid var(--line); background: #fff; color: var(--ink); }
+    .chip.sans { font-family: 'Noto Sans', sans-serif; }
+    .chip.keep, .chip.route { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+    .chip.drop { color: var(--muted); text-decoration: line-through; }
+    .chip.hide { color: var(--muted); border-style: dashed; }
+    .chip.route.off { border-color: var(--line); background: #fff; color: var(--muted); }
+    .chip.route.off small { font-family: 'Noto Sans', sans-serif; margin-left: .15rem; }
+    .chip.skill { border-color: #cbbdf0; background: #f4f0fc; color: #6a4fc0; font-family: 'Noto Sans', sans-serif; }
+    .chip.obs { border-color: #cbbdf0; background: #fff; color: #5b4a9c; }
+    .on .pop { animation: tr-pop .35s ease both; animation-delay: calc(var(--i, 0) * .16s); }
+    @keyframes tr-pop { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: none; } }
+    .tr-note { font-size: .8rem; color: var(--muted); margin-top: .15rem; }
+    .tr-note em { color: var(--ink); }
+    .tr-two { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+    .tr-spec { border: 1px solid var(--line); border-radius: 8px; padding: .5rem .65rem .4rem; background: #fff; }
+    .tr-spec-h { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: .82rem; margin-bottom: .1rem; }
+    .tr-spec-h span { font-weight: 400; color: var(--muted); }
+    .tr-legend { font-size: .74rem; color: var(--muted); margin-top: .35rem; }
+    .tr-legend .chip { font-size: .68rem; padding: 0 .45rem; margin-right: .2rem; }
+    .tr-out { font-size: .85rem; margin-top: .5rem; color: var(--ink); }
+    .tr-code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .8rem; line-height: 1.6; background: #f6f8fa; border-radius: 8px; padding: .6rem .85rem; margin: .45rem 0 .55rem; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink); }
+    .tr-code .lbl { color: #6a4fc0; font-weight: 700; }
+    .tr-code .n { color: var(--muted); }
+    .tr-code .res { color: #1b7f5a; font-weight: 600; }
+    .tr-code .cm { color: var(--muted); }
+    .tr-in { transition: opacity .4s; }
+    .tr-in:not(.on) { opacity: 0; }
+    .tools-h { font-size: .76rem; color: var(--muted); margin-top: .2rem; }
+    .tools { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .3rem; }
+    .tools .chip { font-size: .7rem; padding: .05rem .5rem; transition: background .3s, color .3s, border-color .3s; }
+    .tools .chip.used { background: #6a4fc0; border-color: #6a4fc0; color: #fff; }
+    .tr-ans { font-family: 'Google Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: #b53a2e; }
+    .tr-cap { font-size: .82rem; color: var(--muted); margin-top: .6rem; text-align: center; }
+    @media (max-width: 768px) {
+      .tr-step { grid-template-columns: 1fr; gap: .3rem; }
+      .tr-two { grid-template-columns: 1fr; }
+      .tr-prog { margin-left: 0; width: 100%; }
+      .tr-code { font-size: .7rem; padding: .5rem .6rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .tr-step.on, .on .pop, .caret { animation: none; } }
     .method-card { border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; background: #fff; }
     .method-card h4 { font-family: 'Google Sans', sans-serif; font-weight: 700; margin-bottom: .4rem; color: var(--accent); }
     .method-card p { font-size: .95rem; text-align: left; }
@@ -107,7 +187,7 @@
 
     .next-box { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 1.1rem 1.3rem; border-radius: 6px; }
     pre.bibtex { background: #f4f5f7; border-radius: 6px; padding: 1rem; font-size: .85rem; white-space: pre-wrap; word-break: break-word; }
-    footer.footer { padding: 2rem 1rem; background: var(--bg-alt); }
+    footer.footer { padding: 2rem 1rem; background: #fff; border-top: 1px solid var(--line); }
 
     @media (max-width: 768px) {
       .publication-title.is-1 { font-size: 1.8rem; }
@@ -180,41 +260,95 @@
       <h4 class="norm-title"><i class="fas fa-project-diagram"></i> Hierarchical FHIR graph normalization</h4>
       <p>Every resource is flattened into path–value pairs, and a hand-written map assigns each path a canonical field name. Resources that belong to one clinical entity are then merged into a single <strong>canonical view</strong>: a medication request, the <code>Medication</code> it references, and its dispenses and administrations become one flat medication view. Every entry keeps the resource it came from, so the agents read compact, consistently named fields while each value stays traceable to the record. Views are computed once per patient and form a layer above the original resource graph.</p>
     </div>
-    <figure class="nf" aria-label="Four linked FHIR resources are flattened, canonicalized and merged into one canonical medication view.">
-      <div>
-        <div class="nf-h">Resource layer <span>· nested JSON, linked by reference</span></div>
-        <div class="nf-res">
-          <div class="nf-card cR"><div class="t"><span class="nf-b">R</span>MedicationRequest</div>
-            <span class="k">status</span>: <span class="v">"active"</span><br>
-            <span class="k">dosageInstruction[0].doseAndRate[0].doseQuantity</span>: <span class="v">30 mL</span><br>
-            <span class="k">medicationReference</span>: <span class="ref">→ Medication/m1</span></div>
-          <div class="nf-card cM"><div class="t"><span class="nf-b">M</span>Medication</div>
-            <span class="k">code.coding[0].code</span>: <span class="v">"46287-0006"</span><br>
-            <span class="k">code.coding[0].display</span>: <span class="v">"Sodium Poly…"</span></div>
-          <div class="nf-card cD"><div class="t"><span class="nf-b">D</span>MedicationDispense</div>
-            <span class="k">quantity</span>: <span class="v">15 g</span> &nbsp;<span class="k">authorizingPrescription</span>: <span class="ref">→ R</span></div>
-          <div class="nf-card cA"><div class="t"><span class="nf-b">A</span>MedicationAdministration</div>
-            <span class="k">dosage.route</span>: <span class="v">"NG tube"</span> &nbsp;<span class="k">request</span>: <span class="ref">→ R</span></div>
-        </div>
+    <figure class="nf" id="normfig">
+      <div class="nf-wrap">
+      <svg class="nf-svg" viewBox="0 0 1000 362" role="img" aria-labelledby="nf-title">
+        <title id="nf-title">Three FHIR resources store the drug name under different paths; normalization maps all of them to medication.name and keeps each value with its source resource.</title>
+        <defs><marker id="nf-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b61c9"/></marker></defs>
+        <text x="16" y="24" class="nf-t">Raw FHIR resources <tspan class="nf-sub">· nested JSON, linked by references</tspan></text>
+        <text x="648" y="24" class="nf-t nf-acc">Canonical medication view</text>
+        <text x="482" y="50" text-anchor="middle" class="nf-mid1">flatten · canonicalize · merge</text>
+        <text x="482" y="66" text-anchor="middle" class="nf-sub">κ : raw path → canonical field</text>
+        <g class="nf-card cR" transform="translate(16,40)">
+<rect width="300" height="106" rx="8" class="nf-box"/>
+<path d="M8,0 H292 a8,8 0 0 1 8,8 V24 H0 V8 a8,8 0 0 1 8,-8 z" class="nf-head"/>
+<circle cx="16" cy="12" r="7.5" class="nf-badge"/><text x="16" y="15.4" text-anchor="middle" class="nf-bl">R</text>
+<text x="30" y="16.4" class="nf-name">MedicationRequest</text>
+<text x="12" y="41" class="nf-path ">status</text>
+<text x="12" y="59" class="nf-path ">authoredOn</text>
+<text x="12" y="77" class="nf-path ">dosageInstruction.text</text>
+<text x="12" y="95" class="nf-path nf-ref-t">medicationReference</text>
+</g>
+        <g class="nf-card cM" transform="translate(16,156)">
+<rect width="300" height="52" rx="8" class="nf-box"/>
+<path d="M8,0 H292 a8,8 0 0 1 8,8 V24 H0 V8 a8,8 0 0 1 8,-8 z" class="nf-head"/>
+<circle cx="16" cy="12" r="7.5" class="nf-badge"/><text x="16" y="15.4" text-anchor="middle" class="nf-bl">M</text>
+<text x="30" y="16.4" class="nf-name">Medication</text>
+<text x="12" y="41" class="nf-path ">code.coding.display</text>
+</g>
+        <g class="nf-card cD" transform="translate(16,218)">
+<rect width="300" height="52" rx="8" class="nf-box"/>
+<path d="M8,0 H292 a8,8 0 0 1 8,8 V24 H0 V8 a8,8 0 0 1 8,-8 z" class="nf-head"/>
+<circle cx="16" cy="12" r="7.5" class="nf-badge"/><text x="16" y="15.4" text-anchor="middle" class="nf-bl">D</text>
+<text x="30" y="16.4" class="nf-name">MedicationDispense</text>
+<text x="12" y="41" class="nf-path ">medicationCodeableConcept.text</text>
+</g>
+        <g class="nf-card cA" transform="translate(16,280)">
+<rect width="300" height="70" rx="8" class="nf-box"/>
+<path d="M8,0 H292 a8,8 0 0 1 8,8 V24 H0 V8 a8,8 0 0 1 8,-8 z" class="nf-head"/>
+<circle cx="16" cy="12" r="7.5" class="nf-badge"/><text x="16" y="15.4" text-anchor="middle" class="nf-bl">A</text>
+<text x="30" y="16.4" class="nf-name">MedicationAdministration</text>
+<text x="12" y="41" class="nf-path ">medicationCodeableConcept.coding.display</text>
+<text x="12" y="59" class="nf-path ">dosage.route.text</text>
+</g>
+        <path d="M316,77 C482,77 482,139 648,139" pathLength="1" class="nf-link" style="--d:0.10s"/>
+<circle cx="316" cy="77" r="2.6" class="nf-dot" style="--d:-0.40s"/>
+<circle cx="648" cy="139" r="2.6" class="nf-dot" style="--d:0.40s"/>
+<path d="M316,95 C482,95 482,165 648,165" pathLength="1" class="nf-link" style="--d:0.22s"/>
+<circle cx="316" cy="95" r="2.6" class="nf-dot" style="--d:-0.28s"/>
+<circle cx="648" cy="165" r="2.6" class="nf-dot" style="--d:0.52s"/>
+<path d="M316,113 C482,113 482,191 648,191" pathLength="1" class="nf-link" style="--d:0.34s"/>
+<circle cx="316" cy="113" r="2.6" class="nf-dot" style="--d:-0.16s"/>
+<circle cx="648" cy="191" r="2.6" class="nf-dot" style="--d:0.64s"/>
+<path d="M316,193 C482,193 482,216 648,216" pathLength="1" class="nf-link hi" style="--d:0.46s"/>
+<circle cx="316" cy="193" r="2.6" class="nf-dot hi" style="--d:-0.04s"/>
+<circle cx="648" cy="216" r="2.6" class="nf-dot hi" style="--d:0.76s"/>
+<path d="M316,255 C482,255 482,234 648,234" pathLength="1" class="nf-link hi" style="--d:0.58s"/>
+<circle cx="316" cy="255" r="2.6" class="nf-dot hi" style="--d:0.08s"/>
+<circle cx="648" cy="234" r="2.6" class="nf-dot hi" style="--d:0.88s"/>
+<path d="M316,317 C482,317 482,252 648,252" pathLength="1" class="nf-link hi" style="--d:0.70s"/>
+<circle cx="316" cy="317" r="2.6" class="nf-dot hi" style="--d:0.20s"/>
+<circle cx="648" cy="252" r="2.6" class="nf-dot hi" style="--d:1.00s"/>
+<path d="M316,335 C482,335 482,277 648,277" pathLength="1" class="nf-link" style="--d:0.82s"/>
+<circle cx="316" cy="335" r="2.6" class="nf-dot" style="--d:0.32s"/>
+<circle cx="648" cy="277" r="2.6" class="nf-dot" style="--d:1.12s"/>
+        <path d="M316,131 C356,131 356,168 326,168" pathLength="1" class="nf-ref" marker-end="url(#nf-arrow)" style="--d:.55s"/>
+        <g class="nf-view" transform="translate(648,100)">
+<rect width="340" height="190" rx="10" class="nf-vbox"/>
+<path d="M10,0 H330 a10,10 0 0 1 10,10 V26 H0 V10 a10,10 0 0 1 10,-10 z" class="nf-vhead"/>
+<text x="12" y="17.6" class="nf-vtitle">Canonical medication view</text>
+<rect y="104" width="340" height="60" class="nf-hirow"/>
+<text x="12" y="43" class="nf-field">request.status</text>
+<g class="nf-val cR" style="--d:0.15s"><circle cx="172" cy="39" r="7" class="nf-badge"/><text x="172" y="42.4" text-anchor="middle" class="nf-bl">R</text><text x="186" y="43" class="nf-value">completed</text></g>
+<line x1="0" y1="52" x2="340" y2="52" class="nf-sep"/>
+<text x="12" y="69" class="nf-field">request.authoredOn</text>
+<g class="nf-val cR" style="--d:0.3s"><circle cx="172" cy="65" r="7" class="nf-badge"/><text x="172" y="68.4" text-anchor="middle" class="nf-bl">R</text><text x="186" y="69" class="nf-value">2023-05-14</text></g>
+<line x1="0" y1="78" x2="340" y2="78" class="nf-sep"/>
+<text x="12" y="95" class="nf-field">request.dose</text>
+<g class="nf-val cR" style="--d:0.45s"><circle cx="172" cy="91" r="7" class="nf-badge"/><text x="172" y="94.4" text-anchor="middle" class="nf-bl">R</text><text x="186" y="95" class="nf-value">500 mg twice daily</text></g>
+<line x1="0" y1="104" x2="340" y2="104" class="nf-sep"/>
+<text x="12" y="138" class="nf-field">medication.name</text>
+<g class="nf-val cM" style="--d:0.6s"><circle cx="172" cy="116" r="7" class="nf-badge"/><text x="172" y="119.4" text-anchor="middle" class="nf-bl">M</text><text x="186" y="120" class="nf-value">Metformin 500 mg tablet</text></g>
+<g class="nf-val cD" style="--d:0.75s"><circle cx="172" cy="134" r="7" class="nf-badge"/><text x="172" y="137.4" text-anchor="middle" class="nf-bl">D</text><text x="186" y="138" class="nf-value">metFORMIN 500mg tab</text></g>
+<g class="nf-val cA" style="--d:0.9s"><circle cx="172" cy="152" r="7" class="nf-badge"/><text x="172" y="155.4" text-anchor="middle" class="nf-bl">A</text><text x="186" y="156" class="nf-value">Metformin</text></g>
+<line x1="0" y1="164" x2="340" y2="164" class="nf-sep"/>
+<text x="12" y="181" class="nf-field">administration.route</text>
+<g class="nf-val cA" style="--d:1.05s"><circle cx="172" cy="177" r="7" class="nf-badge"/><text x="172" y="180.4" text-anchor="middle" class="nf-bl">A</text><text x="186" y="181" class="nf-value">oral</text></g>
+</g>
+        <text x="648" y="308" class="nf-sub">one view per anchor resource · every value keeps its source</text>
+      </svg>
       </div>
-      <div class="nf-mid">
-        <span class="nf-step">flatten</span>
-        <span class="nf-step">canonicalize</span>
-        <span class="nf-step">merge</span>
-        <span class="nf-arrow"><i class="fas fa-arrow-right"></i></span>
-      </div>
-      <div>
-        <div class="nf-view">
-          <div class="nf-h">Canonical medication view</div>
-          <div class="nf-row cM"><span class="nf-b">M</span><span class="f">medication.name</span><span class="v">"Sodium Poly…"</span></div>
-          <div class="nf-row cM"><span class="nf-b">M</span><span class="f">medication.code</span><span class="v">"46287-0006"</span></div>
-          <div class="nf-row cR"><span class="nf-b">R</span><span class="f">request.status</span><span class="v">"active"</span></div>
-          <div class="nf-row cR"><span class="nf-b">R</span><span class="f">request.dose</span><span class="v">"30 mL"</span></div>
-          <div class="nf-row cD"><span class="nf-b">D</span><span class="f">dispense.quantity</span><span class="v">"15 g"</span></div>
-          <div class="nf-row cA"><span class="nf-b">A</span><span class="f">administration.route</span><span class="v">"NG tube"</span></div>
-        </div>
-        <div class="nf-foot">One view per anchor resource; the badge on each field records its source.</div>
-      </div>
+      <figcaption>Normalizing one prescription from the worked example. Three resources store the drug name under three paths and spellings; κ sends all of them to <code>medication.name</code>, and the view keeps each value tagged with its source. The request's reference is followed to reach the <code>Medication</code> resource.</figcaption>
     </figure>
     <div class="method-grid three">
       <div class="method-card">
@@ -233,8 +367,107 @@
   </div>
 </section>
 
+<!-- Worked example -->
+<section class="section alt" id="example">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Worked Example</h2>
+    <div class="content">
+      <p>How FHIR-GRAMS answers the question from the overview figure. The record is normalized once; the planner, specialists, and composer then each do one small job, and the answer is computed by deterministic tools rather than written from memory. Press play, or step through.</p>
+    </div>
+    <div class="trace" id="trace">
+      <div class="trace-bar">
+        <button class="tbtn primary" id="tr-play" type="button"><i class="fas fa-play"></i> Play</button>
+        <button class="tbtn" id="tr-next" type="button"><i class="fas fa-forward-step"></i> Step</button>
+        <button class="tbtn" id="tr-replay" type="button"><i class="fas fa-rotate-left"></i> Replay</button>
+        <span class="tr-prog" id="tr-prog"></span>
+      </div>
+      <div class="tr-steps">
+        <div class="tr-hint" id="tr-hint">Press <strong>Play</strong> to run the example.</div>
+
+        <div class="tr-step q" data-step="0" data-label="The question">
+          <div class="tr-role"><i class="fas fa-user"></i> Question</div>
+          <div class="tr-body"><div class="tr-q">“<span class="tt" data-text="What antidiabetic medications was the patient taking before 2024-01-01, and what is the latest HbA1c?" data-speed="22"></span><span class="caret"></span>”</div></div>
+        </div>
+
+        <div class="tr-step rec" data-step="1" data-label="Record normalized once per patient">
+          <div class="tr-role"><i class="fas fa-database"></i> Record</div>
+          <div class="tr-body">
+            <div class="chips"><span class="grp">4 medication views</span>
+              <span class="chip sans pop" style="--i:0">metformin</span><span class="chip sans pop" style="--i:1">glipizide</span><span class="chip sans pop" style="--i:2">lisinopril</span><span class="chip sans pop" style="--i:3">insulin glargine</span>
+              <span class="grp pop" style="--i:4">3 observation views</span><span class="chip sans obs pop" style="--i:4">HbA1c</span><span class="chip sans obs pop" style="--i:5">HbA1c</span><span class="chip sans obs pop" style="--i:6">HbA1c</span></div>
+            <div class="tr-note">Normalized once, before any question: each prescription with its <code>Medication</code>, dispenses, and administrations becomes one flat medication view; each lab result becomes an observation view with <code>obs.name</code>, <code>obs.value</code>, <code>obs.unit</code>, <code>obs.time</code>.</div>
+          </div>
+        </div>
+
+        <div class="tr-step pl" data-step="2" data-label="Planner routes the question">
+          <div class="tr-role"><i class="fas fa-route"></i> Planner</div>
+          <div class="tr-body">
+            <div class="chips"><span class="grp">Routing plan</span>
+              <span class="chip route sans pop" style="--i:0"><i class="fas fa-check"></i> Medication</span>
+              <span class="chip route sans pop" style="--i:1"><i class="fas fa-check"></i> Observation</span>
+              <span class="chip route off sans pop" style="--i:2"><i class="fas fa-xmark"></i> Condition <small>not invoked</small></span></div>
+            <div class="tr-note">Reads only the question. Its routing skill maps <em>drugs, prescriptions</em> to medication views and <em>labs, measurements</em> to observation views, so two specialists run and the record's size never enters this decision.</div>
+          </div>
+        </div>
+
+        <div class="tr-step sp" data-step="3" data-label="Specialists select fields">
+          <div class="tr-role"><i class="fas fa-filter"></i> Specialists</div>
+          <div class="tr-body">
+            <div class="tr-two">
+              <div class="tr-spec">
+                <div class="tr-spec-h">Medication specialist <span>· 4 views</span></div>
+                <div class="chips">
+                  <span class="chip keep pop" style="--i:0">medication.name</span><span class="chip keep pop" style="--i:1">request.authoredOn</span><span class="chip keep pop" style="--i:2">request.status</span>
+                  <span class="chip drop pop" style="--i:3">request.dose</span><span class="chip drop pop" style="--i:4">dispense.quantity</span><span class="chip hide pop" style="--i:5">meta · patient · NDC code</span></div>
+                <div class="tr-note"><em>taking</em> depends on the order's status, <em>before</em> on its date; dose fields are not asked for.</div>
+              </div>
+              <div class="tr-spec">
+                <div class="tr-spec-h">Observation specialist <span>· 3 views</span></div>
+                <div class="chips">
+                  <span class="chip keep pop" style="--i:1">obs.name</span><span class="chip keep pop" style="--i:2">obs.value</span><span class="chip keep pop" style="--i:3">obs.unit</span><span class="chip keep pop" style="--i:4">obs.time</span></div>
+                <div class="tr-note">Everything a <em>latest value</em> question needs, nothing else.</div>
+              </div>
+            </div>
+            <div class="tr-legend"><span class="chip keep">kept</span><span class="chip drop">not selected</span><span class="chip hide">hidden by the exclude list</span></div>
+            <div class="tr-out"><i class="fas fa-arrow-turn-down" style="transform:rotate(-90deg);color:var(--muted)"></i> Evidence: the selected entries of 7 views, each tagged with its source resource.</div>
+          </div>
+        </div>
+
+        <div class="tr-step co" data-step="4" data-label="Composer plans a tool chain">
+          <div class="tr-role"><i class="fas fa-toolbox"></i> Composer</div>
+          <div class="tr-body">
+            <div class="chips"><span class="grp">Retrieved skills (K = 3)</span>
+              <span class="chip skill pop" style="--i:0"><i class="fas fa-book"></i> temporal reasoning</span><span class="chip skill pop" style="--i:1"><i class="fas fa-book"></i> code matching</span><span class="chip skill pop" style="--i:2"><i class="fas fa-book"></i> cross-resource integration</span></div>
+<pre class="tr-code"><span class="lbl">plan</span>     <span class="n">1</span>  <span class="tt" data-text="filter_by_date(Medication,
+      request.authoredOn &lt; 2024-01-01)" data-speed="14"></span>
+         <span class="n">2</span>  <span class="tt" data-text="find_extreme(Observation,
+      obs.name = Hemoglobin A1c,
+      by = obs.time, mode = latest)" data-speed="14"></span>
+<span class="tr-in" data-step="5" data-label="Execute call 1"><span class="lbl">execute</span>  <span class="n">1</span>  → <span class="res">metformin, glipizide, lisinopril</span>   <span class="cm">insulin glargine was ordered after the cutoff</span></span>
+<span class="tr-in" data-step="6" data-label="Execute call 2">         <span class="n">2</span>  → <span class="res">6.9 % on 2024-03-15</span>   <span class="cm">the latest of the three HbA1c values</span></span>
+<span class="tr-in" data-step="7" data-label="Reason with the code-matching skill"><span class="lbl">reason</span>      code-matching skill: metformin and glipizide are antidiabetic agents;
+      lisinopril is an antihypertensive → dropped. No further round needed.</span>
+<span class="tr-in" data-step="8"><span class="lbl">answer</span>      final_answer(…)</span></pre>
+            <div class="tools-h">13 deterministic atomic tools + <code>final_answer</code> — the calls used light up</div>
+            <div class="tools"><span class="chip">get_resources</span><span class="chip" data-use=5>filter_by_date</span><span class="chip">filter_by_value</span><span class="chip">get_by_index</span><span class="chip">extract_field_value</span><span class="chip">sort_records</span><span class="chip" data-use=6>find_extreme</span><span class="chip">aggregate</span><span class="chip">count_values</span><span class="chip">compare_values</span><span class="chip">calculate_difference</span><span class="chip">calculate_time_offset</span><span class="chip">combine_evidence</span><span class="chip" data-use=8>final_answer</span></div>
+          </div>
+        </div>
+
+        <div class="tr-step ans" data-step="8" data-label="Answer">
+          <div class="tr-role"><i class="fas fa-circle-check"></i> Answer</div>
+          <div class="tr-body">
+            <div class="tr-ans">“metformin and glipizide; the latest HbA1c is 6.9% (2024-03-15).”</div>
+            <div class="tr-note">One round, two tool calls. Every number in the answer came out of a deterministic tool, so it can be checked against the evidence.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tr-cap">Illustrative patient record and simplified tool-call syntax, following the worked example in the paper's appendix.</div>
+  </div>
+</section>
+
 <!-- Results -->
-<section class="section alt" id="results">
+<section class="section" id="results">
   <div class="container is-max-widescreen" style="max-width:1100px">
     <h2 class="title is-3 has-text-centered">Results</h2>
     <div class="content">
@@ -271,7 +504,7 @@
 </section>
 
 <!-- Ablations -->
-<section class="section">
+<section class="section alt">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Ablations</h2>
     <div class="content">
@@ -289,7 +522,7 @@
 </section>
 
 <!-- Follow-up -->
-<section class="section alt">
+<section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">What's Next: FHIR-R1</h2>
     <div class="next-box content">
@@ -299,7 +532,7 @@
 </section>
 
 <!-- BibTeX -->
-<section class="section" id="BibTeX">
+<section class="section alt" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title is-3">BibTeX</h2>
 <pre class="bibtex">@misc{ge2026fhirgrams,
@@ -317,5 +550,104 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  // normalization figure: draw the curves when it scrolls into view
+  var nf = document.getElementById('normfig');
+  if (nf && 'IntersectionObserver' in window) {
+    var io0 = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { nf.classList.add('play'); io0.disconnect(); } });
+    }, { threshold: 0.35 });
+    io0.observe(nf);
+  } else if (nf) { nf.classList.add('play'); }
+
+  // worked-example trace
+  var trace = document.getElementById('trace');
+  if (!trace) return;
+  var items = Array.prototype.slice.call(trace.querySelectorAll('[data-step]'));
+  var N = 0, labels = [];
+  items.forEach(function (e) { var s = +e.dataset.step; if (s + 1 > N) N = s + 1; if (e.dataset.label) labels[s] = e.dataset.label; });
+  var playBtn = document.getElementById('tr-play'), nextBtn = document.getElementById('tr-next'),
+      replayBtn = document.getElementById('tr-replay'), prog = document.getElementById('tr-prog'),
+      hint = document.getElementById('tr-hint');
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cur = -1, playing = false, typers = [], waitT = null, waitR = null, started = false;
+  var DUR = [700, 1500, 1900, 2600, 500, 1500, 1500, 1900, 0];
+
+  function fill(root) {
+    var list = root.classList.contains('tt') ? [root] : root.querySelectorAll('.tt');
+    Array.prototype.forEach.call(list, function (x) { x.textContent = x.dataset.text; });
+  }
+  function cancelTyping() { typers.forEach(clearInterval); typers = []; trace.classList.remove('typing'); }
+  function cancelWait() { if (waitT) { clearTimeout(waitT); waitT = null; } if (waitR) { var r = waitR; waitR = null; r(); } }
+  function wait(ms) { return new Promise(function (res) { waitR = res; waitT = setTimeout(function () { waitT = null; waitR = null; res(); }, ms); }); }
+  function typeInto(el, text, speed) {
+    return new Promise(function (res) {
+      el.textContent = ''; var i = 0;
+      var t = setInterval(function () {
+        i++; el.textContent = text.slice(0, i);
+        if (i >= text.length) { clearInterval(t); res(); }
+      }, speed);
+      typers.push(t);
+    });
+  }
+  function setProg() {
+    prog.textContent = cur < 0 ? '' : 'Step ' + (cur + 1) + ' of ' + N + (labels[cur] ? ' · ' + labels[cur] : '');
+    hint.style.display = cur < 0 ? '' : 'none';
+    playBtn.innerHTML = playing ? '<i class="fas fa-pause"></i> Pause' : (cur >= N - 1 ? '<i class="fas fa-rotate-left"></i> Replay' : '<i class="fas fa-play"></i> Play');
+  }
+  function show(n, instant) {
+    items.forEach(function (e) {
+      var s = +e.dataset.step;
+      if (s <= n) { e.classList.add('on'); if (s < n || instant) fill(e); }
+      else { e.classList.remove('on'); }
+    });
+    Array.prototype.forEach.call(trace.querySelectorAll('[data-use]'), function (c) { c.classList.toggle('used', +c.dataset.use <= n); });
+  }
+  function goTo(n, animate) {
+    cancelTyping(); cancelWait();
+    cur = Math.max(-1, Math.min(n, N - 1));
+    show(cur, !animate || reduced);
+    setProg();
+    if (!animate || reduced || cur < 0) return Promise.resolve();
+    var tts = [];
+    items.forEach(function (e) {
+      if (+e.dataset.step !== cur) return;
+      if (e.classList.contains('tt')) tts.push(e);
+      Array.prototype.push.apply(tts, e.querySelectorAll('.tt'));
+    });
+    if (!tts.length) return Promise.resolve();
+    trace.classList.add('typing');
+    var p = Promise.resolve();
+    tts.forEach(function (x) { p = p.then(function () { return typeInto(x, x.dataset.text, +x.dataset.speed || 20); }); });
+    return p.then(function () { trace.classList.remove('typing'); });
+  }
+  function play() {
+    if (playing) return;
+    if (cur >= N - 1) { show(-1, true); cur = -1; }
+    playing = true; started = true; setProg();
+    (function step() {
+      if (!playing) return;
+      if (cur >= N - 1) { playing = false; setProg(); return; }
+      goTo(cur + 1, true).then(function () {
+        if (!playing) return;
+        return wait(DUR[cur] || 1200).then(function () { if (playing) step(); });
+      });
+    })();
+  }
+  function pause() { playing = false; cancelWait(); setProg(); }
+  playBtn.addEventListener('click', function () { playing ? pause() : play(); });
+  nextBtn.addEventListener('click', function () { pause(); started = true; if (cur < N - 1) goTo(cur + 1, true); });
+  replayBtn.addEventListener('click', function () { pause(); show(-1, true); cur = -1; play(); });
+  setProg();
+  if (reduced) { goTo(N - 1, false); }
+  else if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting && !started) { play(); io.disconnect(); } });
+    }, { threshold: 0.3 });
+    io.observe(trace);
+  }
+})();
+</script>
 </body>
 </html>
