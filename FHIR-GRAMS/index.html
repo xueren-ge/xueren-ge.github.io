@@ -81,6 +81,9 @@
     .nf.play .nf-link, .nf.play .nf-ref { stroke-dashoffset: 0; }
     .nf-val, .nf-dot { opacity: 0; transition: opacity .5s ease calc(var(--d, 0s) + .45s); }
     .nf.play .nf-val, .nf.play .nf-dot { opacity: 1; }
+    /* loop: everything fades out together, then snaps back to the start without transitions */
+    .nf.out .nf-link, .nf.out .nf-ref, .nf.out .nf-val, .nf.out .nf-dot { opacity: 0; transition: opacity .5s ease; }
+    .nf.reset .nf-link, .nf.reset .nf-ref, .nf.reset .nf-val, .nf.reset .nf-dot { transition: none; }
     figure.nf figcaption { color: var(--muted); font-size: .9rem; margin-top: .5rem; text-align: center; }
     @media (max-width: 768px) { .nf-svg { min-width: 860px; } }
     @media (prefers-reduced-motion: reduce) {
@@ -552,13 +555,36 @@
 
 <script>
 (function () {
-  // normalization figure: draw the curves when it scrolls into view
+  // normalization figure: draw the curves when it scrolls into view, then loop
+  // (draw → hold → fade → reset). Hovering keeps the drawn state; leaving the viewport pauses the loop.
   var nf = document.getElementById('normfig');
-  if (nf && 'IntersectionObserver' in window) {
-    var io0 = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { nf.classList.add('play'); io0.disconnect(); } });
-    }, { threshold: 0.35 });
-    io0.observe(nf);
+  var nfReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (nf && !nfReduced && 'IntersectionObserver' in window) {
+    var nfT = null, nfHover = false, nfOn = false, NF_HOLD = 6000;
+    var nfWait = function (ms, fn) { clearTimeout(nfT); nfT = setTimeout(fn, ms); };
+    var nfClear = function () {
+      nf.classList.add('reset'); nf.classList.remove('play', 'out');
+      void nf.offsetWidth; nf.classList.remove('reset');
+    };
+    var nfDraw = function () { nf.classList.add('play'); nfWait(NF_HOLD, nfFade); };
+    var nfFade = function () {
+      if (nfHover) { nfWait(300, nfFade); return; }
+      nf.classList.add('out');
+      nfWait(550, function () { nfClear(); nfWait(450, nfDraw); });
+    };
+    var nfResume = function () {
+      if (nf.classList.contains('out')) { nfClear(); nfWait(450, nfDraw); }
+      else if (nf.classList.contains('play')) { nfWait(NF_HOLD, nfFade); }
+      else { nfDraw(); }
+    };
+    nf.addEventListener('mouseenter', function () { nfHover = true; });
+    nf.addEventListener('mouseleave', function () { nfHover = false; });
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.intersectionRatio >= 0.35 && !nfOn) { nfOn = true; nfResume(); }
+        else if (!e.isIntersecting && nfOn) { nfOn = false; clearTimeout(nfT); }
+      });
+    }, { threshold: [0, 0.35] }).observe(nf);
   } else if (nf) { nf.classList.add('play'); }
 
   // worked-example trace
