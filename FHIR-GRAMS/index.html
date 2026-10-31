@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FHIR-GRAMS: Graph-Normalized Records and a Multi-Agent System for EHR Question Answering</title>
+  <meta name="description" content="FHIR-GRAMS normalizes FHIR records into canonical clinical views and divides question answering among a planner, resource-specific specialists, and a composer with retrieved skills and deterministic tools.">
+  <meta property="og:title" content="FHIR-GRAMS: Graph-Normalized Records and a Multi-Agent System for EHR Question Answering">
+  <meta property="og:description" content="Multi-agent question answering over FHIR health records: +11.6 / +8.0 accuracy points over the strongest baseline with fewer tokens.">
+  <meta property="og:image" content="static/images/fhiragent-pipeline-bigfont.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --accent: #2f6f4f;
+      --accent-soft: #eaf4ee;
+      --ink: #1f2933;
+      --muted: #5f6b76;
+      --line: #e3e7eb;
+      --bg: #ffffff;
+      --bg-alt: #f7f9fa;
+    }
+    body { font-family: 'Noto Sans', sans-serif; color: var(--ink); background: var(--bg); }
+    .publication-title { font-family: 'Google Sans', sans-serif; line-height: 1.25; }
+    .publication-authors { font-family: 'Google Sans', sans-serif; font-size: 1.15rem; }
+    .publication-authors a { color: #3273dc; }
+    .author-block { display: inline-block; margin: 0 .35rem; }
+    .venue { color: var(--muted); font-size: 1.05rem; margin-top: .35rem; }
+    .link-row .button { margin: .25rem; }
+    .button.is-dark[disabled] { opacity: .55; }
+    .section { padding: 2.5rem 1rem; }
+    .section.alt { background: var(--bg-alt); }
+    h2.title.is-3 { font-family: 'Google Sans', sans-serif; }
+    .content p { text-align: justify; }
+    figure.paper-fig { margin: 0 auto; text-align: center; }
+    figure.paper-fig img { width: 100%; height: auto; border-radius: 6px; }
+    figure.paper-fig figcaption { color: var(--muted); font-size: .95rem; margin-top: .6rem; text-align: center; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .stat { background: var(--accent-soft); border-radius: 10px; padding: 1rem 1.1rem; text-align: center; }
+    .stat .num { font-family: 'Google Sans', sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--accent); line-height: 1.1; }
+    .stat .lbl { font-size: .9rem; color: var(--muted); margin-top: .3rem; }
+
+    .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .method-card { border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; background: #fff; }
+    .method-card h4 { font-family: 'Google Sans', sans-serif; font-weight: 700; margin-bottom: .4rem; color: var(--accent); }
+    .method-card p { font-size: .95rem; text-align: left; }
+
+    .paper-table { border-collapse: collapse; margin: 0 auto; font-size: .86rem; background: #fff; font-variant-numeric: tabular-nums; }
+    .paper-table th, .paper-table td { padding: .32em .6em; text-align: center; vertical-align: middle; white-space: nowrap; border: none; }
+    .paper-table .m { text-align: left; }
+    .paper-table td.bb, .paper-table th.bb { text-align: left; color: var(--ink); }
+    .paper-table thead tr.top th { border-top: 2px solid #222; padding-top: .5em; }
+    .paper-table thead th.grp { border-bottom: 1px solid #888; }
+    .paper-table thead tr.sub th { border-bottom: 1px solid #222; font-weight: 600; line-height: 1.2; }
+    .paper-table thead tr.sub th span { font-weight: 400; color: var(--muted); }
+    .paper-table thead th { font-weight: 700; }
+    .paper-table tr.gstart td { border-top: 1px solid #222; }
+    .paper-table tbody tr:last-child td { border-bottom: 2px solid #222; }
+    .paper-table tr.ours td:not(.bb) { background: var(--accent-soft); }
+    .paper-table td:nth-child(n+7) { }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table.results { font-size: .82rem; margin: 0 auto; }
+    table.results th, table.results td { padding: .3em .45em; }
+    table.results th, table.results td { text-align: center; vertical-align: middle; white-space: nowrap; }
+    table.results td:first-child, table.results th:first-child { text-align: left; }
+    table.results tr.ours td { background: var(--accent-soft); font-weight: 600; }
+    table.results tr.group td { background: #f1f3f5; font-weight: 700; text-align: left; }
+    .best { font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+    .note { color: var(--muted); font-size: .85rem; margin-top: .5rem; text-align: center; }
+
+    .next-box { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 1.1rem 1.3rem; border-radius: 6px; }
+    pre.bibtex { background: #f4f5f7; border-radius: 6px; padding: 1rem; font-size: .85rem; white-space: pre-wrap; word-break: break-word; }
+    footer.footer { padding: 2rem 1rem; background: var(--bg-alt); }
+
+    @media (max-width: 768px) {
+      .publication-title.is-1 { font-size: 1.8rem; }
+      .content p { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-1 publication-title">FHIR-GRAMS: Graph-Normalized Records and a Multi-Agent System for EHR Question Answering</h1>
+      <div class="publication-authors">
+        <span class="author-block"><a href="https://xueren-ge.github.io/" target="_blank">Xueren Ge</a><sup>1,2</sup>,</span>
+        <span class="author-block">Milad Asgari Mehrabadi<sup>1</sup>,</span>
+        <span class="author-block"><a href="http://alumni.cs.ucr.edu/~jkuang/" target="_blank">Jilong Kuang</a><sup>1</sup></span>
+      </div>
+      <div class="venue"><sup>1</sup>Samsung Research America &nbsp;·&nbsp; <sup>2</sup>University of Virginia</div>
+      <div class="venue">Under review &nbsp;·&nbsp; Work done during an internship at Samsung Research America</div>
+      <div class="link-row" style="margin-top:1.2rem">
+        <a class="button is-normal is-rounded is-dark" disabled title="Coming soon">
+          <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper (coming soon)</span>
+        </a>
+        <a class="button is-normal is-rounded is-dark" disabled title="Coming soon">
+          <span class="icon"><i class="fab fa-github"></i></span><span>Code (coming soon)</span>
+        </a>
+        <a class="button is-normal is-rounded is-dark" href="#BibTeX">
+          <span class="icon"><i class="fas fa-quote-right"></i></span><span>BibTeX</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser -->
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop">
+    <figure class="paper-fig">
+      <img src="static/images/fhiragent-pipeline-bigfont.png" alt="FHIR-GRAMS pipeline: hierarchical FHIR normalization, planner routing, specialist field selection, and a composer with retrieved skills and atomic tools in a plan-and-execute loop.">
+      <figcaption>FHIR-GRAMS first normalizes the FHIR graph into canonical clinical views, then a planner routes the question to resource-specific specialists that keep only the relevant fields, and a composer answers with retrieved skills and deterministic atomic tools.</figcaption>
+    </figure>
+    <div class="stats">
+      <div class="stat"><div class="num">+11.6 / +8.0</div><div class="lbl">judged accuracy points over the strongest baseline (two Gemini backbones)</div></div>
+      <div class="stat"><div class="num">100% / 96.7%</div><div class="lbl">on MedAgentBench v1 / v2 with Gemini-3.1-Flash-Lite</div></div>
+      <div class="stat"><div class="num">up to 2.1×</div><div class="lbl">fewer tokens per query than the skill-optimized GRASP agent</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">FHIR QA benchmarks, best exact match on every one</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section alt">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Abstract</h2>
+    <div class="content">
+      <p>Answering clinical questions over Fast Healthcare Interoperability Resources (FHIR) records requires assembling evidence that is scattered across reference-linked resources and buried in deeply nested attributes. Existing agents give these raw resources to a single model, which must retrieve, relate, and compute within one long context. We present FHIR-GRAMS, a multi-agent framework that first normalizes the FHIR graph into canonical clinical views and then divides the reasoning: a planner routes the query to resource-specific specialists that select the relevant fields, and a composer answers from the aggregated evidence with retrieved skills and deterministic tools. On four FHIR question-answering benchmarks, FHIR-GRAMS improves accuracy over the strongest baseline by 11.6 and 8.0 points with two Gemini backbones, while using fewer tokens and less time per query.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Method -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Approach</h2>
+    <div class="content">
+      <p>A patient's FHIR record is a graph of typed, nested JSON resources linked by references. A single clinical event is often split across resources: a prescription may carry no drug name and only point to a separate <code>Medication</code> resource, while the dispense record spells the same drug differently. FHIR-GRAMS separates <em>evidence processing</em> from <em>answer composition</em>.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <h4><i class="fas fa-project-diagram"></i> Graph normalization</h4>
+        <p>Every resource is flattened into path–value pairs, and a hand-written map lifts linked resources into one <strong>canonical view</strong> per clinical entity (e.g., request + medication + dispense + administration → one medication view), keeping each value's source resource.</p>
+      </div>
+      <div class="method-card">
+        <h4><i class="fas fa-route"></i> Planner</h4>
+        <p>Reads only the question and selects the view types it involves, guided by a routing skill, so the decision does not grow with the size of the record.</p>
+      </div>
+      <div class="method-card">
+        <h4><i class="fas fa-filter"></i> Specialists</h4>
+        <p>One agent per view type keeps only the canonical fields the question needs; metadata and raw codes are hidden by a fixed exclude list.</p>
+      </div>
+      <div class="method-card">
+        <h4><i class="fas fa-toolbox"></i> Composer</h4>
+        <p>Retrieves the top-<em>K</em> procedure skills (temporal reasoning, code matching, cross-resource integration) and plans chains of <strong>13 deterministic atomic tools</strong> in a plan-and-execute loop for up to <em>N</em> rounds.</p>
+      </div>
+    </div>
+    <figure class="paper-fig" style="max-width:420px; margin-top:2rem">
+      <img src="static/images/fhiragent-overview.png" alt="Raw FHIR resources and their canonical views.">
+      <figcaption>Raw FHIR resources (a) and the canonical views built from them (b).</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="section alt" id="results">
+  <div class="container is-max-widescreen" style="max-width:1100px">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+    <div class="content">
+      <p>We evaluate on the test sets of four FHIR question-answering benchmarks: FHIR-AgentBench and FHIRPath-QA (built on MIMIC-IV-FHIR) and MedAgentBench v1 and v2 (built on Stanford STARR records), writing all skills from only 20 FHIR-AgentBench training queries. Each cell is exact match / LLM-judged accuracy (%). FHIR-GRAMS is the most accurate method with both backbones and has the best exact match on every benchmark; with Gemini-2.5-Flash it already matches the best baseline running on the newer Gemini-3.1-Flash-Lite.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="paper-table">
+        <thead>
+          <tr class="top"><th rowspan="2" class="m">Method</th><th rowspan="2" class="bb">Backbone</th><th colspan="4" class="grp">Per-benchmark accuracy (EM / Judge, %)</th><th colspan="4" class="grp">Overall</th></tr>
+          <tr class="sub"><th>FHIR-AgentBench<br><span>(409)</span></th><th>FHIRPath-QA<br><span>(222)</span></th><th>MedAgentBench v1<br><span>(40)</span></th><th>MedAgentBench v2<br><span>(120)</span></th><th>EM&nbsp;↑</th><th>Judge&nbsp;↑</th><th>Latency<br><span>(s)&nbsp;↓</span></th><th>Tokens<br><span>(k)&nbsp;↓</span></th></tr>
+        </thead>
+        <tbody>
+<tr class="gstart"><td class="m">FHIRPath-QA<sup>†</sup></td><td class="bb" rowspan="1">GPT-4.1-Mini</td><td>–</td><td>–&thinsp;/&thinsp;41.5</td><td>–</td><td>–</td><td>–</td><td>41.5</td><td>–</td><td>–</td></tr>
+<tr class="gstart"><td class="m" rowspan="2">FHIR-Hopper<sup>†</sup></td><td class="bb" rowspan="1">Gemini-3-Flash</td><td>–&thinsp;/&thinsp;56.8</td><td>–</td><td>–&thinsp;/&thinsp;95.9</td><td>–</td><td>–</td><td>58.7</td><td>–</td><td>23.1</td></tr>
+<tr class=""><td class="bb" rowspan="1">Claude Sonnet 4.6</td><td>–&thinsp;/&thinsp;61.1</td><td>–</td><td>–&thinsp;/&thinsp;94.6</td><td>–</td><td>–</td><td>62.7</td><td>–</td><td>21.0</td></tr>
+<tr class="gstart"><td class="m">CodeAct, single-turn</td><td class="bb" rowspan="4">Gemini-2.5-Flash</td><td>28.4&thinsp;/&thinsp;30.6</td><td>36.0&thinsp;/&thinsp;38.7</td><td>42.0&thinsp;/&thinsp;44.0</td><td>44.7&thinsp;/&thinsp;45.3</td><td>33.7</td><td>35.8</td><td><b>6.36</b></td><td><b>6.1</b></td></tr>
+<tr class=""><td class="m">CodeAct, multi-turn</td><td>49.9&thinsp;/&thinsp;53.5</td><td>41.9&thinsp;/&thinsp;45.9</td><td>65.0&thinsp;/&thinsp;70.0</td><td>67.3&thinsp;/&thinsp;68.7</td><td>51.0</td><td>54.5</td><td>15.25</td><td>27.6</td></tr>
+<tr class=""><td class="m">GRASP</td><td>51.3&thinsp;/&thinsp;57.5</td><td>32.4&thinsp;/&thinsp;35.6</td><td>52.0&thinsp;/&thinsp;<b>72.5</b></td><td>54.2&thinsp;/&thinsp;<b>75.8</b></td><td>46.4</td><td>54.9</td><td>12.13</td><td>45.8</td></tr>
+<tr class="ours"><td class="m"><b>FHIR-GRAMS (ours)</b></td><td><b>58.7</b>&thinsp;/&thinsp;<b>66.7</b></td><td><b>57.2</b>&thinsp;/&thinsp;<b>62.6</b></td><td><b>72.5</b>&thinsp;/&thinsp;<b>72.5</b></td><td><b>70.0</b>&thinsp;/&thinsp;70.8</td><td><b>60.7</b></td><td><b>66.5</b></td><td>11.62</td><td>26.1</td></tr>
+<tr class="gstart"><td class="m">CodeAct, single-turn</td><td class="bb" rowspan="4">Gemini-3.1-Flash-Lite</td><td>19.1&thinsp;/&thinsp;23.0</td><td>23.4&thinsp;/&thinsp;27.9</td><td>65.0&thinsp;/&thinsp;65.0</td><td>65.0&thinsp;/&thinsp;66.7</td><td>29.6</td><td>33.1</td><td><b>7.66</b></td><td><b>5.9</b></td></tr>
+<tr class=""><td class="m">CodeAct, multi-turn</td><td>53.9&thinsp;/&thinsp;60.3</td><td>58.1&thinsp;/&thinsp;63.5</td><td>80.0&thinsp;/&thinsp;82.5</td><td>85.8&thinsp;/&thinsp;86.7</td><td>61.2</td><td>66.3</td><td>18.04</td><td>41.6</td></tr>
+<tr class=""><td class="m">GRASP</td><td>53.1&thinsp;/&thinsp;60.3</td><td>46.4&thinsp;/&thinsp;49.1</td><td>72.5&thinsp;/&thinsp;95.0</td><td>64.2&thinsp;/&thinsp;72.5</td><td>53.9</td><td>60.8</td><td>20.46</td><td>56.8</td></tr>
+<tr class="ours"><td class="m"><b>FHIR-GRAMS (ours)</b></td><td><b>56.2</b>&thinsp;/&thinsp;<b>65.5</b></td><td><b>68.0</b>&thinsp;/&thinsp;<b>73.9</b></td><td><b>100.0</b>&thinsp;/&thinsp;<b>100.0</b></td><td><b>96.7</b>&thinsp;/&thinsp;<b>96.7</b></td><td><b>67.9</b></td><td><b>74.3</b></td><td>12.07</td><td>26.6</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>Best</b> per backbone in bold. <sup>†</sup>Reported by the FHIRPath-QA and FHIR-Hopper papers with other backbones; not directly comparable. Single-turn CodeAct is cheapest but trails by 27–41 accuracy points.</p>
+
+    <div class="content" style="margin-top:2rem">
+      <h3 class="title is-4">Efficiency</h3>
+      <p>FHIR-GRAMS needs about 12 s and 26k tokens per query with either backbone, less than multi-turn CodeAct (15–18 s, 28k–42k tokens) and GRASP (12–20 s, 46k–57k tokens), because the specialists bound the evidence that reaches the composer. Among reported systems, FHIR-Hopper uses a similar number of tokens (21k–23k) but is less accurate on FHIR-AgentBench (56.8–61.1 vs. 65.5–66.7 judged).</p>
+    </div>
+  </div>
+</section>
+
+<!-- Ablations -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Ablations</h2>
+    <div class="content">
+      <p>On FHIR-AgentBench with Gemini-2.5-Flash, adding the planner and then the specialists to a composer that reads the full normalized record raises judged accuracy by <strong>8.8 points at almost half the tokens</strong> (57.9 → 66.7, 51.8k → 28.3k). Replacing raw resources with canonical views alone improves accuracy from 48.1 / 56.4 to 52.3 / 61.1 while lowering tokens. In skills, success and failure indicators help, whereas worked examples hurt and cost about 3.8k more tokens.</p>
+    </div>
+    <figure class="paper-fig">
+      <img src="static/images/ablation_3panel.png" alt="Ablation bars for components, graph normalization, and composer-skill content with token costs.">
+      <figcaption>Ablations with tokens per query on the right axis (accuracy axis is cropped).</figcaption>
+    </figure>
+    <figure class="paper-fig" style="margin-top:2rem">
+      <img src="static/images/kn_three_gemini25flash.png" alt="K-N sweep: accuracy, tokens per query, and retrieval F1.">
+      <figcaption>Varying retrieved skills <em>K</em> and composer rounds <em>N</em>: (a) accuracy, (b) tokens per query, (c) retrieval F1 against gold resources. Skills and rounds add up in accuracy (+14.6 judged points together) while their token costs compound.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Follow-up -->
+<section class="section alt">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">What's Next: FHIR-R1</h2>
+    <div class="next-box content">
+      <p style="text-align:left">FHIR-GRAMS reaches its accuracy with hand-written skills and frozen API models. In ongoing work, <strong>FHIR-R1</strong>, we move from agent design to agent training: a multi-turn tool-using Qwen3-8B agent over patient FHIR records is post-trained with reinforcement learning (DAPO). A teacher that receives <strong>privileged information</strong> is trained first and then distilled into a deployable student, which sees only the question and the record, through <strong>on-policy self-distillation</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+<pre class="bibtex">@misc{ge2026fhirgrams,
+  title  = {FHIR-GRAMS: Graph-Normalized Records and a Multi-Agent System for EHR Question Answering},
+  author = {Ge, Xueren and Asgari Mehrabadi, Milad and Kuang, Jilong},
+  year   = {2026},
+  note   = {Under review}
+}</pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container is-max-desktop has-text-centered">
+    <p style="color:var(--muted); font-size:.9rem">Page template adapted from <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>. &nbsp;·&nbsp; <a href="https://xueren-ge.github.io/">Xueren Ge</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
